@@ -4,6 +4,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "axi-backend", "axi-backend\axi-backend.csproj", "{6391055B-3D77-4954-A291-40EA05606400}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE} = {3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE}
+		{B9B39040-A470-4EEE-99A8-D36D54F0A05D} = {B9B39040-A470-4EEE-99A8-D36D54F0A05D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxiBusinessLogicLayer", "AxiBusinessLogicLayer\AxiBusinessLogicLayer.csproj", "{3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DD50285-D15C-4905-8877-F0BFC9668414} = {5DD50285-D15C-4905-8877-F0BFC9668414}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxiDal", "AxiDal\AxiDal.csproj", "{B9B39040-A470-4EEE-99A8-D36D54F0A05D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5DD50285-D15C-4905-8877-F0BFC9668414} = {5DD50285-D15C-4905-8877-F0BFC9668414}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxiInterfaces", "AxiInterfaces\AxiInterfaces.csproj", "{5DD50285-D15C-4905-8877-F0BFC9668414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +31,18 @@ Global
 		{6391055B-3D77-4954-A291-40EA05606400}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6391055B-3D77-4954-A291-40EA05606400}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6391055B-3D77-4954-A291-40EA05606400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3511AB1B-C9EB-4B56-98D1-AAE63DBDA4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9B39040-A470-4EEE-99A8-D36D54F0A05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B39040-A470-4EEE-99A8-D36D54F0A05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B39040-A470-4EEE-99A8-D36D54F0A05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B39040-A470-4EEE-99A8-D36D54F0A05D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD50285-D15C-4905-8877-F0BFC9668414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD50285-D15C-4905-8877-F0BFC9668414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD50285-D15C-4905-8877-F0BFC9668414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD50285-D15C-4905-8877-F0BFC9668414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
