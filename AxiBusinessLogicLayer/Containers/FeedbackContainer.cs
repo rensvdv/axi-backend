@@ -1,4 +1,6 @@
 ﻿using AxiBusinessLogicLayer.Entiteiten;
+using AxiInterfaces;
+using AxiInterfaces.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,11 @@ namespace AxiBusinessLogicLayer.Containers
 {
     public class FeedbackContainer
     {
-        public FeedbackContainer()
+        IFeedback FeedbackDAL;
+
+        public FeedbackContainer(IFeedback DAL)
         {
-            
+            FeedbackDAL = DAL;
         }
 
         public string CreateFeedback(Feedback feedback)
@@ -38,9 +42,10 @@ namespace AxiBusinessLogicLayer.Containers
             return e;
         }
 
-        public List<Feedback> GetMijnFeedback(int id)
+        public (string, List<Feedback>) GetMijnFeedback(int id)
         {
-            return new List<Feedback>();
+            (string e, List<Feedback> feedback) = FeedbackDAL.GetMijnFeedback(id);
+            return (e, feedback);
         }
 
         public List<Feedback> GetGroupFeedback(int groepId)
