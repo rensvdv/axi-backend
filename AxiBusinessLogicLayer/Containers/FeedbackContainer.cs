@@ -19,10 +19,13 @@ namespace AxiBusinessLogicLayer.Containers
             FeedbackDAL = DAL;
         }
 
-        public string CreateFeedback(Feedback feedback)
+        public bool MaakFeedback(Feedback feedback)
         {
-            string e = "";
-            return e;
+            bool result = false;
+            FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+            result = FeedbackDAL.MaakFeedback(feedbackDTO);
+            
+            return result;
         }
 
         public string UpdateFeedback(Feedback feedback)
