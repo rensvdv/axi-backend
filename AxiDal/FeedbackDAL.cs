@@ -1,4 +1,5 @@
-﻿using AxiInterfaces.InterFaces;
+﻿using AxiInterfaces.DTO;
+using AxiInterfaces.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace AxiDal
 {
     public class FeedbackDAL : IFeedback
     {
-        public string GetMijnFeedback(int id)
+        public (string, List<FeedbackDTO>) GetMijnFeedback(int id)
         {
             throw new NotImplementedException();
         }
