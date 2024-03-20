@@ -8,11 +8,11 @@ namespace AxiInterfaces.DTO
 {
     public record FeedbackDTO
     {
-        public int Id { get; private set; }
-        public string GivenFeedback { get; private set; }
-        public List<VraagDTO> Vragen { get; private set; }
-        public bool Actief { get; private set; }
-        public GebruikerDTO Zender { get; private set; }
-        public GebruikerDTO Ontvanger { get; private set; }
+        public int Id { get; init; }
+        public string GivenFeedback { get; init; }
+        public List<VraagDTO> Vragen { get; init; }
+        public bool Actief { get; init; }
+        public GebruikerDTO Zender { get; init; }
+        public GebruikerDTO Ontvanger { get; init; }
     }
 }
