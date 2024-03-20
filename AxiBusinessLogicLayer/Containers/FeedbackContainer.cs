@@ -45,11 +45,23 @@ namespace AxiBusinessLogicLayer.Containers
 
         public (string, List<Feedback>) GetMijnFeedback(int id)
         {
-            (string e, List<FeedbackDTO> feedbackDTOs) = FeedbackDAL.GetMijnFeedback(id);
+            List<Feedback> feedbacks = new List<Feedback>();
 
-
-            //return (e, feedback);
-            throw new NotImplementedException();
+            try
+            {
+                List<FeedbackDTO> feedbackDTOs = FeedbackDAL.GetMijnFeedback(id);
+                foreach(FeedbackDTO feedbackDTO in feedbackDTOs)
+                {
+                    Feedback feedback = new Feedback(feedbackDTO);
+                    feedbacks.Add(feedback);
+                }
+                return feedbacks;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                return null;
+            }
         }
 
         public List<Feedback> GetGroupFeedback(int groepId)
