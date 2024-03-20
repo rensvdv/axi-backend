@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,19 @@ namespace AxiBusinessLogicLayer.Entiteiten
 {
     public class Profiel
     {
+        public Profiel()
+        {
+            
+        }
+
+        public Profiel(ProfielDTO profielDTO)
+        {
+            
+        }
+
+        public ProfielDTO ToDTO(Profiel profiel)
+        {
+            return new ProfielDTO();
+        }
     }
 }

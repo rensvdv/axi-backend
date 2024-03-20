@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,22 @@ namespace AxiBusinessLogicLayer.Entiteiten
         {
             Kwestie = kwestie;
             Antwoord = antwoord;
+        }
+
+        public Vraag(VraagDTO vraagDTO)
+        {
+            Kwestie = vraagDTO.Kwestie;
+            Antwoord = vraagDTO.Antwoord;
+        }
+
+        public VraagDTO ToDTO(Vraag vraag)
+        {
+            VraagDTO vraagDTO = new VraagDTO()
+            {
+                Kwestie = vraag.Kwestie,
+                Antwoord = vraag.Antwoord
+            };
+            return vraagDTO;
         }
     }
 }

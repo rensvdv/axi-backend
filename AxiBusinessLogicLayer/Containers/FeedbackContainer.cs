@@ -1,4 +1,7 @@
 ﻿using AxiBusinessLogicLayer.Entiteiten;
+using AxiInterfaces;
+using AxiInterfaces.DTO;
+using AxiInterfaces.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +43,11 @@ namespace AxiBusinessLogicLayer.Containers
 
         public List<Feedback> GetMijnFeedback(int id)
         {
-            return new List<Feedback>();
+            (string e, List<FeedbackDTO> feedbackDTOs) = FeedbackDAL.GetMijnFeedback(id);
+
+
+            //return (e, feedback);
+            throw new NotImplementedException();
         }
 
         public List<Feedback> GetGroupFeedback(int groepId)
