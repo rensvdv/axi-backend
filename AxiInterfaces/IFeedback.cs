@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AxiInterfaces.DTO
+namespace AxiInterfaces
 {
-    public record GebruikerDTO
+    public interface IFeedback
     {
-        public ProfielDTO ProfielDTO { get; private set; }
+        public string GetMijnFeedback(int id);
     }
 }
