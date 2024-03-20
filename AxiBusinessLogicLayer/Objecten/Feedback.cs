@@ -16,7 +16,7 @@
             Vragen = vragen;
             Actief = actief;
             Zender = zender;
-            Ontvanger = ontvanger 
+            Ontvanger = ontvanger;
         }
 
         public Feedback(string givenFeedback)
