@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AxiBusinessLogicLayer
+namespace AxiBusinessLogicLayer.Entiteiten
 {
-    public class Vragen
+    public class Vraag
     {
-        public string Kwestie {  get; private set; }
+        public string Kwestie { get; private set; }
         public string Antwoord { get; private set; }
 
-        public Vragen(string kwestie, string antwoord)
+        public Vraag(string kwestie, string antwoord)
         {
             Kwestie = kwestie;
             Antwoord = antwoord;
