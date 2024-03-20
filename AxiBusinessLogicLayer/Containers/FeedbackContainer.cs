@@ -1,6 +1,7 @@
 ﻿using AxiBusinessLogicLayer.Entiteiten;
-using AxiDal;
+using AxiInterfaces;
 using AxiInterfaces.DTO;
+using AxiDal;
 using AxiInterfaces.InterFaces;
 using System;
 using System.Collections.Generic;
