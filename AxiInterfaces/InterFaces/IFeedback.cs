@@ -9,6 +9,6 @@ namespace AxiInterfaces.InterFaces
 {
     public interface IFeedback
     {
-        public (string, List<FeedbackDTO>) GetMijnFeedback(int id);
+        public List<FeedbackDTO> GetMijnFeedback(int id);
     }
 }
