@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace AxiInterfaces.InterFaces
 {
     public interface IFeedback
     {
-        public string GetMijnFeedback(int id);
+        public (string, List<FeedbackDTO>) GetMijnFeedback(int id);
     }
 }
