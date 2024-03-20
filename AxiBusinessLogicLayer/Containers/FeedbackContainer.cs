@@ -43,7 +43,7 @@ namespace AxiBusinessLogicLayer.Containers
             return e;
         }
 
-        public (string, List<Feedback>) GetMijnFeedback(int id)
+        public List<Feedback> GetMijnFeedback(int id)
         {
             List<Feedback> feedbacks = new List<Feedback>();
 
