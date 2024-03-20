@@ -1,5 +1,5 @@
 ﻿using AxiBusinessLogicLayer.Entiteiten;
-using AxiDal;
+using AxiInterfaces;
 using AxiInterfaces.DTO;
 using AxiInterfaces.InterFaces;
 using System;
@@ -12,11 +12,9 @@ namespace AxiBusinessLogicLayer.Containers
 {
     public class FeedbackContainer
     {
-        IFeedback FeedbackDAL;
-
-        public FeedbackContainer(IFeedback DAL)
+        public FeedbackContainer()
         {
-            FeedbackDAL = DAL;
+            
         }
 
         public string CreateFeedback(Feedback feedback)
