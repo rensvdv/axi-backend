@@ -6,15 +6,17 @@
         public string GivenFeedback { get; private set; }
         public List<Vraag> Vragen { get; private set; }
         public bool Actief { get; private set; }
-        public Gebruiker Gebruiker { get; private set; }
+        public Gebruiker Zender { get; private set; }
+        public Gebruiker Ontvanger { get; private set; }
 
-        public Feedback(int id, string givenFeedback, List<Vraag> vragen, bool actief, Gebruiker gebruiker)
+        public Feedback(int id, string givenFeedback, List<Vraag> vragen, bool actief, Gebruiker zender, Gebruiker ontvanger)
         {
             Id = id;
             GivenFeedback = givenFeedback;
             Vragen = vragen;
             Actief = actief;
-            Gebruiker = gebruiker;
+            Zender = zender;
+            Ontvanger = ontvanger 
         }
 
         public Feedback(string givenFeedback)
