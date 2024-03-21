@@ -31,11 +31,15 @@ namespace AxiBusinessLogicLayer.Entiteiten
             Id = dto.Id;
             GivenFeedback = dto.GivenFeedback;
 
+            List<Vraag> Vragenlijst = new List<Vraag>();
+
             foreach (VraagDTO vraagDTO in dto.Vragen)
             {
                 Vraag vraag = new Vraag(vraagDTO);
-                Vragen.Add(vraag);
+                Vragenlijst.Add(vraag);
             }
+
+            Vragen = Vragenlijst;
             Actief = dto.Actief;
 
             GebruikerDTO gebruikerDTO = dto.Zender;
