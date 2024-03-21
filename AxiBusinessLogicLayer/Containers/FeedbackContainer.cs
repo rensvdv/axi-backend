@@ -19,10 +19,13 @@ namespace AxiBusinessLogicLayer.Containers
             FeedbackDAL = DAL;
         }
 
-        public string CreateFeedback(Feedback feedback)
+        public bool MaakFeedback(Feedback feedback)
         {
-            string e = "";
-            return e;
+            bool result = false;
+            FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+            result = FeedbackDAL.MaakFeedback(feedbackDTO);
+            
+            return result;
         }
 
         public string UpdateFeedback(Feedback feedback)
@@ -45,24 +48,28 @@ namespace AxiBusinessLogicLayer.Containers
 
         public List<Feedback> GetMijnFeedback(int id)
         {
-            (string e, List<FeedbackDTO> feedbackDTOs) = FeedbackDAL.GetMijnFeedback(id);
+            List<Feedback> feedbacks = new List<Feedback>();
 
-
-            //return (e, feedback);
-            throw new NotImplementedException();
+            try
+            {
+                List<FeedbackDTO> feedbackDTOs = FeedbackDAL.GetMijnFeedback(id);
+                foreach(FeedbackDTO feedbackDTO in feedbackDTOs)
+                {
+                    Feedback feedback = new Feedback(feedbackDTO);
+                    feedbacks.Add(feedback);
+                }
+                return feedbacks;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                return null;
+            }
         }
 
         public List<Feedback> GetGroupFeedback(int groepId)
         {
-            try
-            {
-                return FeedbackDAL.GetGroupFeedback(groepId).Select(feedback => new Feedback(feedback)).ToList();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return null;
-            }
+            return new List<Feedback>();
 
         }
     }
