@@ -60,7 +60,7 @@ namespace AxiBusinessLogicLayer.Containers
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                Console.WriteLine($"Error: {ex.Message}");
                 return null;
             }
 
