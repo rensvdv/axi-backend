@@ -10,6 +10,6 @@ namespace AxiInterfaces.InterFaces
     public interface IFeedback
     {
         public bool MaakFeedback(FeedbackDTO feedbackDTO);
-        public (string, List<FeedbackDTO>) GetMijnFeedback(int id);
+        public List<FeedbackDTO> GetMijnFeedback(int id);
     }
 }

@@ -14,5 +14,10 @@ namespace AxiDal
         {
             throw new NotImplementedException();
         }
+
+        public bool MaakFeedback(FeedbackDTO feedbackDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

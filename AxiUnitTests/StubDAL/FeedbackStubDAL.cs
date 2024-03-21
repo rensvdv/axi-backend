@@ -67,5 +67,10 @@ namespace AxiUnitTests.StubDAL
             List<FeedbackDTO> feedbackDTOs = new List<FeedbackDTO>() { feedback1, feedback2, feedback3 };
             return feedbackDTOs;
         }
+
+        public bool MaakFeedback(FeedbackDTO feedbackDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
