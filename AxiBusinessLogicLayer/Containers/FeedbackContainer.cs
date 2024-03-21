@@ -69,7 +69,15 @@ namespace AxiBusinessLogicLayer.Containers
 
         public List<Feedback> GetGroupFeedback(int groepId)
         {
-            return new List<Feedback>();
+            try
+            {
+                return FeedbackDAL.GetGroupFeedback(groepId).Select(feedback => new Feedback(feedback)).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                return null;
+            }
 
         }
     }

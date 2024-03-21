@@ -10,6 +10,11 @@ namespace AxiDal
 {
     public class FeedbackDAL : IFeedback
     {
+        public List<FeedbackDTO> GetGroupFeedback(int groepId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FeedbackDTO> GetMijnFeedback(int id)
         {
             throw new NotImplementedException();

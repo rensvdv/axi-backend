@@ -10,6 +10,41 @@ namespace AxiUnitTests.UnitTests
     public class FeedbackUnitTest
     {
         [TestMethod]
+        public void TestGetGroepFeedback()
+        {
+            //Arrange
+            int groepId = 1;
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
+            FeedbackContainer feedbackContainer = new FeedbackContainer(stubDAL);
+
+            Vraag vraag = new Vraag("Test Kwestie", "Test Antwoord");
+            List<Vraag> vraagList = new List<Vraag>() { vraag };
+            Profiel profiel = new Profiel();
+            Gebruiker gebruiker = new Gebruiker(profiel);
+            Feedback feedback1 = new Feedback(1, "Test1", vraagList, true, gebruiker, gebruiker);
+            Feedback feedback2 = new Feedback(2, "Test2", vraagList, true, gebruiker, gebruiker);
+            Feedback feedback3 = new Feedback(3, "Test3", vraagList, false, gebruiker, gebruiker);
+            Feedback feedback4 = new Feedback(4, "Test3", vraagList, true, gebruiker, gebruiker);
+
+            int expectedCount = 3;
+            int expectedFeedbackId1 = 1;
+            int expectedFeedbackId2 = 2;
+            int expectedFeedbackId3 = 4;
+
+            //Act
+            List<Feedback> feedback = feedbackContainer.GetGroupFeedback(groepId);
+
+            //Assert
+            Assert.AreEqual(expectedFeedbackId1, feedback[0].Id);
+            Assert.AreEqual(expectedFeedbackId2, feedback[1].Id);
+            Assert.AreEqual(expectedFeedbackId3, feedback[2].Id);
+
+            Assert.AreEqual(expectedCount, feedback.Count);
+            Assert.AreEqual(groepId, stubDAL.GivenId);
+        }
+
+
+        [TestMethod]
         public void TestGetMijnFeedback()
         {
             //Arrange
