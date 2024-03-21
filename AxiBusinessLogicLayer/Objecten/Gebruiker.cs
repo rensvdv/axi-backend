@@ -11,6 +11,11 @@ namespace AxiBusinessLogicLayer.Entiteiten
     {
         public Profiel Profiel { get; private set; }
 
+        public Gebruiker(Profiel profiel)
+        {
+            Profiel = profiel;
+        }
+
         public Gebruiker(GebruikerDTO gebruikerDTO)
         {
             ProfielDTO profielDTO = gebruikerDTO.ProfielDTO;
