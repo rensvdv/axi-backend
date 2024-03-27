@@ -114,9 +114,10 @@ namespace AxiUnitTests.StubDAL
             }
 
             //Zoekt naar alle feedback van de teamleden
-            List<FeedbackDTO> feedbackTeam = new();
+            List<FeedbackDTO> feedbackTeam = null;
             if (gekozenTeam != null)
             {
+                feedbackTeam = new();
                 foreach (GebruikerDTO gebruikerDTO in gekozenTeam.Teamleden)
                 {
                     foreach (FeedbackDTO feedbackDTO in feedbackDTOs)
