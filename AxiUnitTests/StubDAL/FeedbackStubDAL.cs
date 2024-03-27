@@ -20,7 +20,7 @@ namespace AxiUnitTests.StubDAL
 
         public int GivenId { get; private set; }
 
-        public List<FeedbackDTO> GetGroupFeedback(int groepId)
+        public List<FeedbackDTO> GetGroupFeedbackAll(int groepId)
         {
             GivenId = groepId;
 

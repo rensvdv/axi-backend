@@ -29,7 +29,7 @@ namespace AxiUnitTests.UnitTests
             Feedback feedback3 = new Feedback(4, "Test4", vraagList, true, gebruiker, gebruiker);
 
             //Act
-            List<Feedback> feedback = feedbackContainer.GetGroupFeedback(groepId);
+            List<Feedback> feedback = feedbackContainer.GetGroupFeedbackAll(groepId);
 
             //Assert
             Assert.AreEqual(feedback1.Id, feedback[0].Id);
@@ -73,7 +73,7 @@ namespace AxiUnitTests.UnitTests
             int expectedCount = 2;
 
             //Act
-            List<Feedback> feedback = feedbackContainer.GetGroupFeedback(groepId);
+            List<Feedback> feedback = feedbackContainer.GetGroupFeedbackAll(groepId);
 
             //Assert
             Assert.AreEqual(feedback1.Id, feedback[0].Id);
@@ -93,7 +93,7 @@ namespace AxiUnitTests.UnitTests
         }
 
         [TestMethod]
-        public void TestGetGroepFeedbackFail()
+        public void TestGetGroepFeedbackAllFail()
         {
             //Arrange
             int groepId = 3;
@@ -102,7 +102,7 @@ namespace AxiUnitTests.UnitTests
             FeedbackContainer feedbackContainer = new FeedbackContainer(stubDAL);
 
             //Act
-            List<Feedback> feedback = feedbackContainer.GetGroupFeedback(groepId);
+            List<Feedback> feedback = feedbackContainer.GetGroupFeedbackAll(groepId);
 
             //Assert
             Assert.IsNull(feedback);
