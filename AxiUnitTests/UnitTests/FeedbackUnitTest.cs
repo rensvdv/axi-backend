@@ -10,6 +10,42 @@ namespace AxiUnitTests.UnitTests
     public class FeedbackUnitTest
     {
         [TestMethod]
+        public void TestMaakFeedback_true()
+        {
+            //Arrange
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
+            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+            List<Vraag> vraaglijst = new List<Vraag>();
+            Profiel profiel = new Profiel();
+            Gebruiker gebruiker = new Gebruiker(profiel);
+            Feedback feedback = new Feedback(4, "Test4", vraaglijst, true, gebruiker, gebruiker);
+
+            //Act
+            bool result = feedbackcontainer.MaakFeedback(feedback);
+
+            //Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestMaakFeedback_false()
+        {
+            //Arrange
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
+            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+            List<Vraag> vraaglijst = new List<Vraag>();
+            Profiel profiel = new Profiel();
+            Gebruiker gebruiker = new Gebruiker(profiel);
+            Feedback feedback = new Feedback(4, "", vraaglijst, true, gebruiker, gebruiker);
+
+            //Act
+            bool result = feedbackcontainer.MaakFeedback(feedback);
+
+            //Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
         public void TestGetMijnFeedback()
         {
             //Arrange

@@ -21,11 +21,24 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool MaakFeedback(Feedback feedback)
         {
-            bool result = false;
-            FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
-            result = FeedbackDAL.MaakFeedback(feedbackDTO);
+            try
+            {
+                bool result = false;
+
+                if (string.IsNullOrEmpty(feedback.GivenFeedback))
+                {
+                    return false;
+                }
+                FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+                result = FeedbackDAL.MaakFeedback(feedbackDTO);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
             
-            return result;
         }
 
         public string UpdateFeedback(Feedback feedback)
