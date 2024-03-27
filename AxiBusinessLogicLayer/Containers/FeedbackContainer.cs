@@ -80,11 +80,11 @@ namespace AxiBusinessLogicLayer.Containers
             }
         }
 
-        public List<Feedback> GetGroupFeedbackAll(int groepId)
+        public List<Feedback> GetGroepFeedbackAll(int groepId)
         {
             try
             {
-                return FeedbackDAL.GetGroupFeedbackAll(groepId).Select(feedback => new Feedback(feedback)).ToList();
+                return FeedbackDAL.GetGroepFeedbackAll(groepId).Select(feedback => new Feedback(feedback)).ToList();
             }
             catch (Exception e)
             {
