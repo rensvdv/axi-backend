@@ -182,7 +182,7 @@ namespace AxiUnitTests.StubDAL
 
         public bool MaakFeedback(FeedbackDTO feedbackDTO)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
