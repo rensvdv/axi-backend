@@ -111,7 +111,9 @@ namespace AxiUnitTests.UnitTests
 
 
         [TestMethod]
-        public void TestMaakFeedback_true()
+        [DataRow(4, "Test4", true, true)]
+        [DataRow(4, "", true, false)]
+        public void TestMaakFeedback_true(int id, string givenfeedback, bool actief, bool expected)
         {
             //Arrange
             FeedbackStubDAL stubDAL = new FeedbackStubDAL();
@@ -119,31 +121,13 @@ namespace AxiUnitTests.UnitTests
             List<Vraag> vraaglijst = new List<Vraag>();
             Profiel profiel = new Profiel();
             Gebruiker gebruiker = new Gebruiker(profiel);
-            Feedback feedback = new Feedback(4, "Test4", vraaglijst, true, gebruiker, gebruiker);
+            Feedback feedback = new Feedback(id, givenfeedback, vraaglijst, actief, gebruiker, gebruiker);
 
             //Act
             bool result = feedbackcontainer.MaakFeedback(feedback);
 
             //Assert
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod]
-        public void TestMaakFeedback_false()
-        {
-            //Arrange
-            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
-            List<Vraag> vraaglijst = new List<Vraag>();
-            Profiel profiel = new Profiel();
-            Gebruiker gebruiker = new Gebruiker(profiel);
-            Feedback feedback = new Feedback(4, "", vraaglijst, true, gebruiker, gebruiker);
-
-            //Act
-            bool result = feedbackcontainer.MaakFeedback(feedback);
-
-            //Assert
-            Assert.IsFalse(result);
+            Assert.AreEqual(result, expected);
         }
 
         [TestMethod]
