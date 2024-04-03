@@ -10,6 +10,9 @@ namespace AxiBusinessLogicLayer.Entiteiten
     public class Gebruiker
     {
         public Profiel Profiel { get; private set; }
+        public int Id { get; set; }
+
+        public string Naam { get; set; }
 
         public Gebruiker(Profiel profiel)
         {

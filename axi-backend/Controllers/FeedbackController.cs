@@ -22,8 +22,14 @@ namespace axi_backend.Controllers
         public List<Feedback> GetMijnFeedback(int id)
         {
             return _container.GetMijnFeedback(id); 
+            
             //Mock return
-            /*new List<Feedback> { new Feedback(1, "hi", null, true, null, null) };*/
+            /* return new List<Feedback> {
+                new Feedback(1, "feedback van gebruiker 4 over gebruiker 1", null, true, new Gebruiker(new Profiel()) {Id = 4, Naam = "Gebruiker 4"}, new Gebruiker(new Profiel()) {Id = 1, Naam = "Gebruiker 1" }),
+                new Feedback(2, "feedback van gebruiker 3 over gebruiker 1", null, true, new Gebruiker(new Profiel()) {Id = 3, Naam = "Gebruiker 3"}, new Gebruiker(new Profiel()) {Id = 1, Naam = "Gebruiker 1" }),
+                new Feedback(3, "feedback van gebruiker 2 over gebruiker 1", null, true, new Gebruiker(new Profiel()) {Id = 2, Naam = "Gebruiker 2"}, new Gebruiker(new Profiel()) {Id = 1, Naam = "Gebruiker 1" }),
+
+                };*/
         }
     }
 }
