@@ -18,7 +18,7 @@ namespace axi_backend.Controllers
 
         }
 
-        [HttpGet("{feedbackid}", Name = "GetMijnFeedback")]
+        [HttpGet("{userid}", Name = "GetMijnFeedback")]
         public List<Feedback> GetMijnFeedback(int id)
         {
             return _container.GetMijnFeedback(id); 
