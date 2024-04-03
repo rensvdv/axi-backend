@@ -11,7 +11,7 @@ namespace AxiDal
 {
     public class FeedbackDAL : DbContext, IFeedback
     {
-        public List<AxiInterfaces.DTO.FeedbackDTO> GetGroepFeedbackAll(int groepId)
+        public List<FeedbackDTO> GetGroepFeedbackAll(int groepId)
         {
             using var db = new SetUp();
             try
@@ -31,7 +31,7 @@ namespace AxiDal
             }
         }
 
-        public bool MaakFeedback(AxiInterfaces.DTO.FeedbackDTO feedbackDTO)
+        public bool MaakFeedback(FeedbackDTO feedbackDTO)
         {
             using var db = new SetUp();
             try
@@ -48,7 +48,7 @@ namespace AxiDal
             }
         }
 
-        public List<AxiInterfaces.DTO.FeedbackDTO> GetMijnFeedback(int id)
+        public List<FeedbackDTO> GetMijnFeedback(int id)
         {
             throw new NotImplementedException();
         }
