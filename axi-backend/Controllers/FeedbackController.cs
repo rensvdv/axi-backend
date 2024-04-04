@@ -19,11 +19,19 @@ namespace axi_backend.Controllers
         }
 
         [HttpGet("getmijnfeedback/{feedbackid}")]
-        public List<Feedback> GetMijnFeedback(int id)
+        public List<Feedback> GetMijnFeedback(int feedbackid)
         {
-            return _container.GetMijnFeedback(id);
+            return _container.GetMijnFeedback(feedbackid);
             //Mock return
             /* return new List<Feedback> { new Feedback(1, "hi", null, true, null, null) }; */
+        }
+
+        [HttpGet("getgroepfeedbackall/{groepid}")]
+        public List<Feedback> GetGroepFeedbackAll(int groepid)
+        {
+            return _container.GetGroepFeedbackAll(groepid);
+            //Mock return
+            //return new List<Feedback> { new Feedback(1, "hi", null, true, null, null) };
         }
 
         [HttpPost("maakfeedback")]
