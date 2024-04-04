@@ -113,7 +113,7 @@ namespace AxiUnitTests.UnitTests
         [TestMethod]
         [DataRow(4, "Test4", true, true)]
         [DataRow(4, "", true, false)]
-        public void TestMaakFeedback_true(int id, string givenfeedback, bool actief, bool expected)
+        public void TestMaakFeedback(int id, string givenfeedback, bool actief, bool expected)
         {
             //Arrange
             FeedbackStubDAL stubDAL = new FeedbackStubDAL();
