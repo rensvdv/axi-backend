@@ -49,6 +49,20 @@ namespace axi_backend.Controllers
                  new Feedback(2, "ho", null, true, null, null),
                  new Feedback(3, "ha", null, true, null, null) }; */
         }
+
+        [HttpPut("updatefeedback")]
+        public IActionResult UpdateFeedback([FromBody] Feedback feedback)
+        {
+            bool result = _container.UpdateFeedback(feedback);
+            if (result)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
 

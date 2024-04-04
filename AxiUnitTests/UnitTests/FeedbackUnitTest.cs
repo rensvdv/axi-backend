@@ -172,5 +172,25 @@ namespace AxiUnitTests.UnitTests
             //Assert.AreEqual(feedback3.Ontvanger.Profiel, feedback[2].Ontvanger.Profiel);
             Assert.AreEqual(1, stubDAL.GivenId);
         }
+
+        [TestMethod]
+        [DataRow(4, "Test4", true, true)]
+        [DataRow(4, "", true, false)]
+        public void TestUpdateFeedbcak(int id, string givenfeedback, bool actief, bool expected)
+        {
+            //Arrange
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
+            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+            List<Vraag> vraaglijst = new List<Vraag>();
+            Profiel profiel = new Profiel();
+            Gebruiker gebruiker = new Gebruiker(profiel);
+            Feedback feedback = new Feedback(id, givenfeedback, vraaglijst, actief, gebruiker, gebruiker);
+
+            //Act
+            bool result = feedbackcontainer.UpdateFeedback(feedback);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
     }
 }

@@ -184,5 +184,10 @@ namespace AxiUnitTests.StubDAL
         {
             return true;
         }
+
+        public bool UpdateFeedback(FeedbackDTO feedbackDTO)
+        {
+            return true;
+        }
     }
 }

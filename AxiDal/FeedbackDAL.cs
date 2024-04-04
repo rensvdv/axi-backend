@@ -52,5 +52,10 @@ namespace AxiDal
         {
             throw new NotImplementedException();
         }
+
+        public bool UpdateFeedback(FeedbackDTO feedbackDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
