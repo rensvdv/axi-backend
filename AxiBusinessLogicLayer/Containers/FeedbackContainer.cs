@@ -41,10 +41,25 @@ namespace AxiBusinessLogicLayer.Containers
             
         }
 
-        public string UpdateFeedback(Feedback feedback)
+        public bool UpdateFeedback(Feedback feedback)
         {
-            string e = "";
-            return e;
+            try
+            {
+                bool result = false;
+
+                if (string.IsNullOrEmpty(feedback.GivenFeedback))
+                {
+                    return false;
+                }
+                FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+                result = FeedbackDAL.UpdateFeedback(feedbackDTO);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public string OntzichtbaarMaken(Feedback feedback)

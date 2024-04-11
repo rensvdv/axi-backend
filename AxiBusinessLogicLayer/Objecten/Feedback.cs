@@ -21,6 +21,11 @@ namespace AxiBusinessLogicLayer.Entiteiten
             Ontvanger = ontvanger;
         }
 
+        public Feedback()
+        {
+
+        }
+
         public Feedback(string givenFeedback)
         {
             GivenFeedback = givenFeedback;
