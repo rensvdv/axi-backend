@@ -5,7 +5,12 @@ using AxiInterfaces.DTO;
 
 public class SetUp : DbContext
 {
-    public string DbPath { get; }
+    public DbSet<FeedbackDTO> FeedbackDTO { get; set; }
+    public DbSet<GebruikerDTO> GebruikerDTO {  get; set; }
+    public DbSet<ProfielDTO> ProfielDTO { get; set; }
+    public DbSet<TeamDTO> TeamDTO { get; set; }
+    public DbSet<VraagDTO> VraagDTO { get; set; }
+    public DbSet<GebruikerTeamProfielDTO> gebruikerTeamProfielDTO { get; set; }
 
     public SetUp()
     {

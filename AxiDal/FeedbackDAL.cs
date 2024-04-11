@@ -17,11 +17,21 @@ namespace AxiDal
             try
             {
                 Console.WriteLine("Reading all team feedback");
-                //List<FeedbackDTO> feedback = db.FeedbackDTO
-                //    .Where(f => f.GroepId == groepId)
-                //    .OrderBy(f => f.Id)
-                //    .ToList();
-                //return feedback;
+
+                //var teamId = 123; // Replace with the desired TeamId
+
+                //var feedbackQuery = from team in db.TeamDTO
+                //                    join gebruikerTeam in db.gebruikerTeamProfielDTO
+                //                        on team.Id equals gebruikerTeam.TeamId
+                //                    join gebruiker in db.GebruikerDTO
+                //                        on gebruikerTeam.GebruikerId equals gebruiker.Id
+                //                    join feedback in db.FeedbackDTO
+                //                        on gebruiker.Id equals feedback.Id
+                //                    where team.Id == teamId
+                //                    select new FeedbackDTO
+                //                    {
+                //                        Id = feedback.Id,
+                //                    };
                 throw new NotImplementedException();
             }
             catch (Exception ex)
@@ -50,7 +60,20 @@ namespace AxiDal
 
         public List<FeedbackDTO> GetMijnFeedback(int id)
         {
-            throw new NotImplementedException();
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Reading Personal feedback.");
+                List<FeedbackDTO> feedback = db.FeedbackDTO
+                    .Where(f => f.Id == id)
+                    .ToList();
+                return feedback;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public bool UpdateFeedback(FeedbackDTO feedbackDTO)
