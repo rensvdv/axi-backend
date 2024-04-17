@@ -18,8 +18,8 @@ namespace AxiInterfaces.DTO
         [Column("Actief")]
         public bool Actief { get; init; }
         [Column("VerzenderId")]
-        public GebruikerDTO Verzender { get; init; }
+        public int VerzenderId { get; init; }
         [Column("OntvangerId")]
-        public GebruikerDTO Ontvanger { get; init; }
+        public int OntvangerId { get; init; }
     }
 }

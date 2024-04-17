@@ -13,7 +13,7 @@ namespace axi_backend.Controllers
         private readonly FeedbackContainer _container;
         public FeedbackController(ILogger<FeedbackController> logger)
         {
-            _container = new FeedbackContainer(new FeedbackDAL());
+            _container = new FeedbackContainer(new FeedbackDAL(), new GebruikerDAL());
             _logger = logger;
 
         }

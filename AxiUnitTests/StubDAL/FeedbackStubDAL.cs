@@ -28,7 +28,7 @@ namespace AxiUnitTests.StubDAL
             VraagDTO vraag = new()
             {
                 Kwestie = "Test Kwestie",
-                Antwoord = "Test Antwoord"
+                //Antwoord = "Test Antwoord"
             };
             List<VraagDTO> vraagList = new() { vraag };
 
@@ -58,8 +58,8 @@ namespace AxiUnitTests.StubDAL
             //Teams
             List<GebruikerDTO> teamleden1 = new() { gebruiker, gebruiker2, gebruiker4 };
             List<GebruikerDTO> teamleden2 = new() { gebruiker, gebruiker3 };
-            TeamDTO team1 = new(1, "Team1");
-            TeamDTO team2 = new(2, "Team2");
+            TeamDTO team1 = new(1, "Team1", "");
+            TeamDTO team2 = new(2, "Team2", "");
 
             //Lijst aan teams
             List<TeamDTO> teamDTOs = new() { team1, team2 };
@@ -71,8 +71,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test1",
                 //Vragen = vraagList,
                 Actief = true,
-                Verzender = gebruiker,
-                Ontvanger = gebruiker
+                //Verzender = gebruiker,
+                //Ontvanger = gebruiker
             };
             FeedbackDTO feedback2 = new()
             {
@@ -80,8 +80,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test2",
                 //Vragen = vraagList,
                 Actief = true,
-                Verzender = gebruiker2,
-                Ontvanger = gebruiker
+                //Verzender = gebruiker2,
+                //Ontvanger = gebruiker
             };
             FeedbackDTO feedback3 = new()
             {
@@ -89,8 +89,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test3",
                 //Vragen = vraagList,
                 Actief = false,
-                Verzender = gebruiker3,
-                Ontvanger = gebruiker
+                //Verzender = gebruiker3,
+                //Ontvanger = gebruiker
             };
             FeedbackDTO feedback4 = new()
             {
@@ -98,8 +98,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test4",
                 //Vragen = vraagList,
                 Actief = true,
-                Verzender = gebruiker4,
-                Ontvanger = gebruiker
+                //Verzender = gebruiker4,
+                //Ontvanger = gebruiker
             };
             List<FeedbackDTO> feedbackDTOs = new() { feedback1, feedback2, feedback3, feedback4 };
 
@@ -139,7 +139,7 @@ namespace AxiUnitTests.StubDAL
             VraagDTO vraag = new VraagDTO()
             {
                 Kwestie = "Test Kwestie",
-                Antwoord = "Test Antwoord"
+                //Antwoord = "Test Antwoord"
             };
             List<VraagDTO> vraagList = new List<VraagDTO>() { vraag };
             ProfielDTO profiel = new ProfielDTO();
@@ -154,8 +154,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test1",
                 //Vragen = vraagList,
                 Actief = true,
-                Verzender = gebruiker,
-                Ontvanger = gebruiker
+                //VerzenderId = gebruiker,
+                //Ontvanger = gebruiker
             };
             FeedbackDTO feedback2 = new FeedbackDTO()
             {
@@ -163,8 +163,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test2",
                 //Vragen = vraagList,
                 Actief = true,
-                Verzender = gebruiker,
-                Ontvanger = gebruiker
+                //Verzender = gebruiker,
+                //Ontvanger = gebruiker
             };
             FeedbackDTO feedback3 = new FeedbackDTO()
             {
@@ -172,8 +172,8 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test3",
                 //Vragen = vraagList,
                 Actief = false,
-                Verzender = gebruiker,
-                Ontvanger = gebruiker
+                //Verzender = gebruiker,
+                //Ontvanger = gebruiker
             };
 
             List<FeedbackDTO> feedbackDTOs = new List<FeedbackDTO>() { feedback1, feedback2, feedback3 };

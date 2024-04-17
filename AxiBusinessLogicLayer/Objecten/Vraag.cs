@@ -21,7 +21,7 @@ namespace AxiBusinessLogicLayer.Entiteiten
         public Vraag(VraagDTO vraagDTO)
         {
             Kwestie = vraagDTO.Kwestie;
-            Antwoord = vraagDTO.Antwoord;
+            //Antwoord = vraagDTO.Antwoord;
         }
 
         public VraagDTO ToDTO(Vraag vraag)
@@ -29,7 +29,7 @@ namespace AxiBusinessLogicLayer.Entiteiten
             VraagDTO vraagDTO = new VraagDTO()
             {
                 Kwestie = vraag.Kwestie,
-                Antwoord = vraag.Antwoord
+                //Antwoord = vraag.Antwoord
             };
             return vraagDTO;
         }
