@@ -68,10 +68,23 @@ namespace AxiBusinessLogicLayer.Containers
             return e;
         }
 
-        public string Archiveren(Feedback feedback)
+        public bool Archiveren(Feedback feedback)
         {
-            string e = "";
-            return e;
+
+            try
+            {
+                bool result = false;
+                FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+                result = FeedbackDAL.
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+            
+
         }
 
         public List<Feedback> GetMijnFeedback(int id)

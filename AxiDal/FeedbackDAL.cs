@@ -57,5 +57,19 @@ namespace AxiDal
         {
             throw new NotImplementedException();
         }
+
+        public bool Archiveer(FeedbackDTO feedbackDTO)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Archiving feedback");
+                db.Update()
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }
