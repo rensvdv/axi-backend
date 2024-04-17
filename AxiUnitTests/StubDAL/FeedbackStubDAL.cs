@@ -58,8 +58,8 @@ namespace AxiUnitTests.StubDAL
             //Teams
             List<GebruikerDTO> teamleden1 = new() { gebruiker, gebruiker2, gebruiker4 };
             List<GebruikerDTO> teamleden2 = new() { gebruiker, gebruiker3 };
-            TeamDTO team1 = new(1, "Team1", teamleden1);
-            TeamDTO team2 = new(2, "Team2", teamleden2);
+            TeamDTO team1 = new(1, "Team1");
+            TeamDTO team2 = new(2, "Team2");
 
             //Lijst aan teams
             List<TeamDTO> teamDTOs = new() { team1, team2 };
@@ -71,7 +71,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test1",
                 //Vragen = vraagList,
                 Actief = true,
-                Zender = gebruiker,
+                Verzender = gebruiker,
                 Ontvanger = gebruiker
             };
             FeedbackDTO feedback2 = new()
@@ -80,7 +80,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test2",
                 //Vragen = vraagList,
                 Actief = true,
-                Zender = gebruiker2,
+                Verzender = gebruiker2,
                 Ontvanger = gebruiker
             };
             FeedbackDTO feedback3 = new()
@@ -89,7 +89,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test3",
                 //Vragen = vraagList,
                 Actief = false,
-                Zender = gebruiker3,
+                Verzender = gebruiker3,
                 Ontvanger = gebruiker
             };
             FeedbackDTO feedback4 = new()
@@ -98,7 +98,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test4",
                 //Vragen = vraagList,
                 Actief = true,
-                Zender = gebruiker4,
+                Verzender = gebruiker4,
                 Ontvanger = gebruiker
             };
             List<FeedbackDTO> feedbackDTOs = new() { feedback1, feedback2, feedback3, feedback4 };
@@ -115,20 +115,20 @@ namespace AxiUnitTests.StubDAL
 
             //Zoekt naar alle feedback van de teamleden
             List<FeedbackDTO> feedbackTeam = null;
-            if (gekozenTeam != null)
-            {
-                feedbackTeam = new();
-                foreach (GebruikerDTO gebruikerDTO in gekozenTeam.Teamleden)
-                {
-                    foreach (FeedbackDTO feedbackDTO in feedbackDTOs)
-                    {
-                        if(gebruikerDTO.Id == feedbackDTO.Zender.Id)
-                        {
-                            feedbackTeam.Add(feedbackDTO);
-                        }
-                    }
-                }
-            }
+            //if (gekozenTeam != null)
+            //{
+            //    feedbackTeam = new();
+            //    foreach (GebruikerDTO gebruikerDTO in gekozenTeam.Teamleden)
+            //    {
+            //        foreach (FeedbackDTO feedbackDTO in feedbackDTOs)
+            //        {
+            //            if(gebruikerDTO.Id == feedbackDTO.Verzender.Id)
+            //            {
+            //                feedbackTeam.Add(feedbackDTO);
+            //            }
+            //        }
+            //    }
+            //}
             return feedbackTeam;
         }
 
@@ -154,7 +154,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test1",
                 //Vragen = vraagList,
                 Actief = true,
-                Zender = gebruiker,
+                Verzender = gebruiker,
                 Ontvanger = gebruiker
             };
             FeedbackDTO feedback2 = new FeedbackDTO()
@@ -163,7 +163,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test2",
                 //Vragen = vraagList,
                 Actief = true,
-                Zender = gebruiker,
+                Verzender = gebruiker,
                 Ontvanger = gebruiker
             };
             FeedbackDTO feedback3 = new FeedbackDTO()
@@ -172,7 +172,7 @@ namespace AxiUnitTests.StubDAL
                 GivenFeedback = "Test3",
                 //Vragen = vraagList,
                 Actief = false,
-                Zender = gebruiker,
+                Verzender = gebruiker,
                 Ontvanger = gebruiker
             };
 
