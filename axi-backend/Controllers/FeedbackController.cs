@@ -23,7 +23,7 @@ namespace axi_backend.Controllers
         {
             return _container.GetMijnFeedback(feedbackid);
             //Mock return
-            /* return new List<Feedback> { new Feedback(1, "hi", null, true, null, null) }; */
+            //return new List<Feedback> { new Feedback(1, "hi", null, true, null, null) };
         }
 
         [HttpPost("maakfeedback")]

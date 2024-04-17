@@ -71,6 +71,17 @@ namespace AxiDal
                 List<FeedbackDTO> feedback = db.FeedbackDTO
                     .Where(f => f.Id == id)
                     .ToList();
+
+                //var query = from f in db.FeedbackDTO
+                //            join g in db.GebruikerDTO
+                //            on f.Zender equals g.Id
+                //            select new FeedbackDTO
+                //            {
+                //                Id = f.Id,
+                //                GivenFeedback = f.GivenFeedback,
+                //                Actief = f.Actief,
+                //            }
+
                 return feedback;
             }
             catch(Exception ex)
