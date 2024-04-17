@@ -189,5 +189,10 @@ namespace AxiUnitTests.StubDAL
         {
             return true;
         }
+
+        public bool Archiveer(FeedbackDTO feedbackDTO)
+        {
+            return true;
+        }
     }
 }

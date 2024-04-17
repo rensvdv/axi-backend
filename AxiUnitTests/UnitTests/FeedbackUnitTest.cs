@@ -201,7 +201,16 @@ namespace AxiUnitTests.UnitTests
             //Arrange
             FeedbackStubDAL stubDAL = new FeedbackStubDAL();
             FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+            List<Vraag> vraaglijst = new List<Vraag>();
+            Profiel profiel = new Profiel();
+            Gebruiker gebruiker = new Gebruiker();
+            Feedback feedback = new Feedback(id, givenfeedback, actief, gebruiker, gebruiker);
 
+            //Act
+            bool result = feedbackcontainer.Archiveren(feedback);
+
+            //Assert
+            Assert.AreEqual(result, expected);
         }
     }
 }
