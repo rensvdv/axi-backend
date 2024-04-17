@@ -49,7 +49,7 @@ namespace AxiBusinessLogicLayer.Containers
 
                 if (string.IsNullOrEmpty(feedback.GivenFeedback))
                 {
-                    return false;
+                    return result;
                 }
                 FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
                 result = FeedbackDAL.UpdateFeedback(feedbackDTO);
@@ -62,25 +62,19 @@ namespace AxiBusinessLogicLayer.Containers
             }
         }
 
-        public string OntzichtbaarMaken(Feedback feedback)
-        {
-            string e = "";
-            return e;
-        }
-
         public bool Archiveren(Feedback feedback)
         {
-
+            bool result = false;
             try
             {
-                bool result = false;
                 FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
-                result = FeedbackDAL.
+                result = FeedbackDAL.Archiveer(feedbackDTO);
+                return result;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return result;
             }
             
             

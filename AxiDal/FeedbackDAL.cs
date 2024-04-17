@@ -55,7 +55,21 @@ namespace AxiDal
 
         public bool UpdateFeedback(FeedbackDTO feedbackDTO)
         {
-            throw new NotImplementedException();
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Updating feedback");
+                db.Attach(feedbackDTO);
+                db.Entry(feedbackDTO).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
         }
 
         public bool Archiveer(FeedbackDTO feedbackDTO)
@@ -64,11 +78,16 @@ namespace AxiDal
             try
             {
                 Console.WriteLine("Archiving feedback");
-                db.Update()
+                db.Attach(feedbackDTO);
+                db.Entry(feedbackDTO).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex); 
+                return false;
             }
         }
     }

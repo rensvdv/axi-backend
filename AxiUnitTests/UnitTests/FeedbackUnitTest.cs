@@ -192,5 +192,16 @@ namespace AxiUnitTests.UnitTests
             //Assert
             Assert.AreEqual(result, expected);
         }
+
+        [TestMethod]
+        [DataRow(6, "Testing", true, true)]
+        [DataRow(6, "Testen", true, false)]
+        public void ArchiveerFeedback(int id, string givenfeedback, bool actief, bool expected) 
+        {
+            //Arrange
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
+            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+
+        }
     }
 }
