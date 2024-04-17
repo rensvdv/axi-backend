@@ -11,7 +11,7 @@ namespace AxiDal
 {
     public class FeedbackDAL : DbContext, IFeedback
     {
-        public List<FeedbackDTO> GetGroepFeedbackAll(int groepId)
+        public List<FeedbackDTO> GetGroepFeedbackAll(int teamid)
         {
             using var db = new SetUp();
             try
@@ -20,19 +20,23 @@ namespace AxiDal
 
                 //var teamId = 123; // Replace with the desired TeamId
 
-                //var feedbackQuery = from team in db.TeamDTO
-                //                    join gebruikerTeam in db.gebruikerTeamProfielDTO
-                //                        on team.Id equals gebruikerTeam.TeamId
-                //                    join gebruiker in db.GebruikerDTO
-                //                        on gebruikerTeam.GebruikerId equals gebruiker.Id
-                //                    join feedback in db.FeedbackDTO
-                //                        on gebruiker.Id equals feedback.Id
-                //                    where team.Id == teamId
-                //                    select new FeedbackDTO
-                //                    {
-                //                        Id = feedback.Id,
-                //                    };
-                throw new NotImplementedException();
+                var feedbackQuery = from team in db.TeamDTO
+                                    join gebruikerTeam in db.gebruikerTeamProfielDTO
+                                        on team.Id equals gebruikerTeam.TeamId
+                                    join gebruiker in db.GebruikerDTO
+                                        on gebruikerTeam.GebruikerId equals gebruiker.Id
+                                    join feedback in db.FeedbackDTO
+                                        on gebruiker.Id equals feedback.Id
+                                    where team.Id == teamid
+                                    select new FeedbackDTO
+                                    {
+                                        Id = feedback.Id,
+                                        GivenFeedback = feedback.GivenFeedback,
+                                        Actief = feedback.Actief,
+                                        Zender = feedback.Zender,
+                                        Ontvanger = feedback.Ontvanger
+                                    };
+               return feedbackQuery.ToList();
             }
             catch (Exception ex)
             {

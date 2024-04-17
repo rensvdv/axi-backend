@@ -14,7 +14,7 @@ namespace AxiInterfaces.DTO
         public int Id { get; init; }
         [Column("GegevenFeedback")]
         public string GivenFeedback { get; init; }
-        public List<VraagDTO> Vragen { get; init; }
+        //public List<VraagDTO> Vragen { get; init; }
         [Column("Actief")]
         public bool Actief { get; init; }
         [Column("VerzenderId")]
