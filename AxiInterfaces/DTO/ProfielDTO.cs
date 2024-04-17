@@ -8,5 +8,6 @@ namespace AxiInterfaces.DTO
 {
     public record ProfielDTO
     {
+        public int Id { get; init; }
     }
 }

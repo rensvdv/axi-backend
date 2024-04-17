@@ -11,8 +11,10 @@ namespace AxiBusinessLogicLayer.Entiteiten
     {
         //public Profiel Profiel { get; private set; }
         public int Id { get; set; }
-
         public string Naam { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool Actief { get; set; }
 
         public Gebruiker()
         { 
@@ -22,15 +24,26 @@ namespace AxiBusinessLogicLayer.Entiteiten
         {
             //ProfielDTO profielDTO = gebruikerDTO;
             //Profiel = new Profiel(profielDTO);
+            Id = gebruikerDTO.Id;
+            Naam = gebruikerDTO.Name;
+            Email = gebruikerDTO.Email;
+            Password = gebruikerDTO.Password;
+            Actief = gebruikerDTO.Actief;
+
         }
 
         public GebruikerDTO ToDTO(Gebruiker gebruiker)
         {
-            Profiel profiel = new Profiel();
+            //Profiel profiel = new Profiel();
             //ProfielDTO profielDTO = profiel.ToDTO(gebruiker.Profiel);
             GebruikerDTO gebruikerDTO = new GebruikerDTO()
             {
                 //ProfielDTO = profielDTO,
+                Id = gebruiker.Id,
+                Name = gebruiker.Naam,
+                Email = gebruiker.Email,
+                Password = gebruiker.Password,
+                Actief = gebruiker.Actief,
             };
             return gebruikerDTO;
         }

@@ -8,6 +8,7 @@ namespace AxiInterfaces.DTO
 {
     public record VraagDTO
     {
+        public int Id { get; init; }
         public string Kwestie { get; init; }
         public string Antwoord { get; init; }
     }

@@ -47,7 +47,7 @@ namespace AxiBusinessLogicLayer.Entiteiten
             //Vragen = Vragenlijst;
             Actief = dto.Actief;
 
-            GebruikerDTO gebruikerDTO = dto.Zender;
+            GebruikerDTO gebruikerDTO = dto.Verzender;
             Zender = new Gebruiker(gebruikerDTO);
 
             GebruikerDTO gebruikerDTO1 = dto.Ontvanger;
@@ -77,7 +77,7 @@ namespace AxiBusinessLogicLayer.Entiteiten
                 GivenFeedback = feedback.GivenFeedback,
                 //Vragen = vraagDTOs,
                 Actief = feedback.Actief,
-                Zender = gebruikerDTO1,
+                Verzender = gebruikerDTO1,
                 Ontvanger = gebruikerDTO2,
             };
             return feedbackDTO;

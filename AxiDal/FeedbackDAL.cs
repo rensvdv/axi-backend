@@ -18,6 +18,8 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
+                
+
                 //var teamId = 123; // Replace with the desired TeamId
 
                 var feedbackQuery = from team in db.TeamDTO
@@ -33,7 +35,7 @@ namespace AxiDal
                                         Id = feedback.Id,
                                         GivenFeedback = feedback.GivenFeedback,
                                         Actief = feedback.Actief,
-                                        Zender = feedback.Zender,
+                                        Verzender = feedback.Verzender,
                                         Ontvanger = feedback.Ontvanger
                                     };
                return feedbackQuery.ToList();
@@ -68,21 +70,41 @@ namespace AxiDal
             try
             {
                 Console.WriteLine("Reading Personal feedback.");
-                List<FeedbackDTO> feedback = db.FeedbackDTO
-                    .Where(f => f.Id == id)
-                    .ToList();
+                //List<FeedbackDTO> feedback = db.FeedbackDTO
+                //    .Where(f => f.Id == id)
+                //    .ToList();
 
-                //var query = from f in db.FeedbackDTO
-                //            join g in db.GebruikerDTO
-                //            on f.Zender equals g.Id
-                //            select new FeedbackDTO
-                //            {
-                //                Id = f.Id,
-                //                GivenFeedback = f.GivenFeedback,
-                //                Actief = f.Actief,
-                //            }
 
-                return feedback;
+                var query = from feedback1 in db.FeedbackDTO
+                            join sender in db.GebruikerDTO
+                            on feedback1.Verzender.Id equals sender.Id
+                            join receiver in db.GebruikerDTO
+                            on feedback1.Ontvanger.Id equals receiver.Id
+                            select new FeedbackDTO
+                            {
+                                Id = feedback1.Id,
+                                GivenFeedback = feedback1.GivenFeedback,
+                                Actief = feedback1.Actief,
+                                Verzender = new GebruikerDTO
+                                {
+                                    Id = sender.Id,
+                                    Name = sender.Name,
+                                    Email = sender.Email,
+                                    Password = sender.Password,
+                                    Actief = sender.Actief,
+                                },
+                                Ontvanger = new GebruikerDTO
+                                {
+                                    Id = receiver.Id,  
+                                    Name = receiver.Name,
+                                    Email = receiver.Email,
+                                    Password = receiver.Password,
+                                    Actief = receiver.Actief,
+                                },
+                            };
+
+
+                return query.ToList();
             }
             catch(Exception ex)
             {
