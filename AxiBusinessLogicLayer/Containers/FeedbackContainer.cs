@@ -13,10 +13,12 @@ namespace AxiBusinessLogicLayer.Containers
     public class FeedbackContainer
     {
         IFeedback FeedbackDAL;
+        IGebruiker GebruikerDAL;
 
-        public FeedbackContainer(IFeedback DAL)
+        public FeedbackContainer(IFeedback DAL, IGebruiker GebruikerDAL)
         {
             FeedbackDAL = DAL;
+            GebruikerDAL = GebruikerDAL;
         }
 
         public bool MaakFeedback(Feedback feedback)
@@ -29,7 +31,7 @@ namespace AxiBusinessLogicLayer.Containers
                 {
                     return false;
                 }
-                FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+                FeedbackDTO feedbackDTO = ToDTO(feedback);
                 result = FeedbackDAL.MaakFeedback(feedbackDTO);
 
                 return result;
@@ -51,7 +53,7 @@ namespace AxiBusinessLogicLayer.Containers
                 {
                     return result;
                 }
-                FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+                FeedbackDTO feedbackDTO = ToDTO(feedback);
                 result = FeedbackDAL.UpdateFeedback(feedbackDTO);
 
                 return result;
@@ -90,7 +92,7 @@ namespace AxiBusinessLogicLayer.Containers
                 List<FeedbackDTO> feedbackDTOs = FeedbackDAL.GetMijnFeedback(id);
                 foreach(FeedbackDTO feedbackDTO in feedbackDTOs)
                 {
-                    Feedback feedback = new Feedback(feedbackDTO);
+                    Feedback feedback = ToFeedback(feedbackDTO);
                     feedbacks.Add(feedback);
                 }
                 return feedbacks;
@@ -106,7 +108,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                return FeedbackDAL.GetGroepFeedbackAll(groepId).Select(feedback => new Feedback(feedback)).ToList();
+                return FeedbackDAL.GetGroepFeedbackAll(groepId).Select(feedback => ToFeedback(feedback)).ToList();
             }
             catch (Exception e)
             {
@@ -114,6 +116,32 @@ namespace AxiBusinessLogicLayer.Containers
                 return null;
             }
 
+        }
+
+        public Feedback ToFeedback(FeedbackDTO feedbackDTO)
+        {
+            GebruikerContainer gebruikerContainer = new GebruikerContainer();
+
+            Feedback feedback = new Feedback(
+                feedbackDTO.Id,
+                feedbackDTO.GivenFeedback,
+                feedbackDTO.Actief,
+                gebruikerContainer.ToGebruiker(GebruikerDAL.GetUserById(feedbackDTO.VerzenderId)),
+                gebruikerContainer.ToGebruiker(GebruikerDAL.GetUserById(feedbackDTO.OntvangerId)));
+            return feedback;
+        }
+
+        public FeedbackDTO ToDTO(Feedback feedback)
+        {
+            FeedbackDTO feedbackDTO = new FeedbackDTO()
+            {
+                Id = feedback.Id,
+                GivenFeedback = feedback.GivenFeedback,
+                Actief = feedback.Actief,
+                VerzenderId = feedback.Zender.Id,
+                OntvangerId = feedback.Ontvanger.Id
+            };
+            return feedbackDTO;
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
-    public record VraagDTO
+    public record GebruikerRechtenDTO
     {
-        public int Id { get; init; }
-        public string Kwestie { get; init; }
+        public int GebruikerId { get; init; }
+        public int RechtenId { get; init; }
     }
 }
