@@ -45,9 +45,9 @@ namespace axi_backend.Controllers
         {
             return _container.GetGroepFeedbackAll(groepid);
             //Mock Return
-            /*return new List<Feedback> { new Feedback(1, "hi", null, true, null, null),
-                 new Feedback(2, "ho", null, true, null, null),
-                 new Feedback(3, "ha", null, true, null, null) }; */
+            /*return new List<Feedback> { new Feedback(1, "Dit is mijn feedback", true, new Gebruiker(){Id = 1, Naam = "Zender 1"}, new Gebruiker(){Id = 2, Naam = "Ontvanger 1"}),
+                 new Feedback(2, "En dit is mijn feedback", true, new Gebruiker(){Id = 3, Naam = "Zender 2"}, new Gebruiker(){Id = 5, Naam = "Ontvanger 2"}),
+                 new Feedback(3, "Vergeet mijn feedback niet!", true, new Gebruiker(){Id = 4, Naam = "Zender 3"}, new Gebruiker(){Id = 6, Naam = "Ontvanger 3"}) }; */
         }
 
         [HttpPut("updatefeedback")]
