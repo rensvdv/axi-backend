@@ -14,14 +14,13 @@ namespace AxiBusinessLogicLayer.Entiteiten
 
         public string Naam { get; set; }
 
-        //public Gebruiker(Profiel profiel)
-        //{
-        //    Profiel = profiel;
-        //}
+        public Gebruiker()
+        { 
+        }
 
         public Gebruiker(GebruikerDTO gebruikerDTO)
         {
-            ProfielDTO profielDTO = gebruikerDTO.ProfielDTO;
+            //ProfielDTO profielDTO = gebruikerDTO;
             //Profiel = new Profiel(profielDTO);
         }
 

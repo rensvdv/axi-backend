@@ -37,22 +37,22 @@ namespace AxiUnitTests.StubDAL
             GebruikerDTO gebruiker = new()
             {
                 Id = 1,
-                ProfielDTO = profiel
+                //ProfielDTO = profiel
             };
             GebruikerDTO gebruiker2 = new()
             {
                 Id = 2,
-                ProfielDTO = profiel
+                //ProfielDTO = profiel
             };
             GebruikerDTO gebruiker3 = new()
             {
                 Id = 3,
-                ProfielDTO = profiel
+                //ProfielDTO = profiel
             };
             GebruikerDTO gebruiker4 = new()
             {
                 Id = 4,
-                ProfielDTO = profiel
+                //ProfielDTO = profiel
             };
 
             //Teams
@@ -69,7 +69,7 @@ namespace AxiUnitTests.StubDAL
             {
                 Id = 1,
                 GivenFeedback = "Test1",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = true,
                 Zender = gebruiker,
                 Ontvanger = gebruiker
@@ -78,7 +78,7 @@ namespace AxiUnitTests.StubDAL
             {
                 Id = 2,
                 GivenFeedback = "Test2",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = true,
                 Zender = gebruiker2,
                 Ontvanger = gebruiker
@@ -87,7 +87,7 @@ namespace AxiUnitTests.StubDAL
             {
                 Id = 3,
                 GivenFeedback = "Test3",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = false,
                 Zender = gebruiker3,
                 Ontvanger = gebruiker
@@ -96,7 +96,7 @@ namespace AxiUnitTests.StubDAL
             {
                 Id = 4,
                 GivenFeedback = "Test4",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = true,
                 Zender = gebruiker4,
                 Ontvanger = gebruiker
@@ -145,14 +145,14 @@ namespace AxiUnitTests.StubDAL
             ProfielDTO profiel = new ProfielDTO();
             GebruikerDTO gebruiker = new GebruikerDTO()
             {
-                ProfielDTO = profiel
+                //ProfielDTO = profiel
             };
 
             FeedbackDTO feedback1 = new FeedbackDTO()
             {
                 Id = 1,
                 GivenFeedback = "Test1",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = true,
                 Zender = gebruiker,
                 Ontvanger = gebruiker
@@ -161,7 +161,7 @@ namespace AxiUnitTests.StubDAL
             {
                 Id = 2,
                 GivenFeedback = "Test2",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = true,
                 Zender = gebruiker,
                 Ontvanger = gebruiker
@@ -170,7 +170,7 @@ namespace AxiUnitTests.StubDAL
             {
                 Id = 3,
                 GivenFeedback = "Test3",
-                Vragen = vraagList,
+                //Vragen = vraagList,
                 Actief = false,
                 Zender = gebruiker,
                 Ontvanger = gebruiker
