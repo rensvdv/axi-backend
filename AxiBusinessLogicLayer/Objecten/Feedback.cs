@@ -4,12 +4,12 @@ namespace AxiBusinessLogicLayer.Entiteiten
 {
     public class Feedback
     {
-        public int Id { get; private set; }
-        public string GivenFeedback { get; private set; }
+        public int Id { get; set; }
+        public string? GivenFeedback { get; set; }
         //public List<Vraag> Vragen { get; private set; }
-        public bool Actief { get; private set; }
-        public Gebruiker Zender { get; private set; }
-        public Gebruiker Ontvanger { get; private set; }
+        public bool Actief { get; set; }
+        public Gebruiker? Zender { get; set; }
+        public Gebruiker? Ontvanger { get; set; }
 
         public Feedback(int id, string givenFeedback/*, List<Vraag> vragen*/, bool actief, Gebruiker zender, Gebruiker ontvanger)
         {
