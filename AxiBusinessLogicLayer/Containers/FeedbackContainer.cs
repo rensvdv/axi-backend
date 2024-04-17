@@ -13,12 +13,12 @@ namespace AxiBusinessLogicLayer.Containers
     public class FeedbackContainer
     {
         IFeedback FeedbackDAL;
-        IGebruiker GebruikerDAL;
+        IGebruiker gebruikerDAL;
 
-        public FeedbackContainer(IFeedback DAL, IGebruiker GebruikerDAL)
+        public FeedbackContainer(IFeedback DAL, IGebruiker gebruikerDAL)
         {
             FeedbackDAL = DAL;
-            GebruikerDAL = GebruikerDAL;
+            this.gebruikerDAL = gebruikerDAL;
         }
 
         public bool MaakFeedback(Feedback feedback)
@@ -113,14 +113,20 @@ namespace AxiBusinessLogicLayer.Containers
 
         public Feedback ToFeedback(FeedbackDTO feedbackDTO)
         {
+            GebruikerDTO gebruikerDTO1 = gebruikerDAL.GetUserById(feedbackDTO.VerzenderId);
+            GebruikerDTO gebruikerDTO2 = gebruikerDAL.GetUserById(feedbackDTO.OntvangerId);
+
             GebruikerContainer gebruikerContainer = new GebruikerContainer();
+
+            Gebruiker gebruiker1 = gebruikerContainer.ToGebruiker(gebruikerDTO1);
+            Gebruiker gebruiker2 = gebruikerContainer.ToGebruiker(gebruikerDTO2);
 
             Feedback feedback = new Feedback(
                 feedbackDTO.Id,
                 feedbackDTO.GivenFeedback,
                 feedbackDTO.Actief,
-                gebruikerContainer.ToGebruiker(GebruikerDAL.GetUserById(feedbackDTO.VerzenderId)),
-                gebruikerContainer.ToGebruiker(GebruikerDAL.GetUserById(feedbackDTO.OntvangerId)));
+                gebruiker1,
+                gebruiker2);
             return feedback;
         }
 

@@ -16,8 +16,9 @@ namespace AxiDal
             using var db = new SetUp();
             try
             {
-                GebruikerDTO dto = (GebruikerDTO)db.GebruikerDTO
-                    .Where(x => x.Id == id);
+                GebruikerDTO dto = db.GebruikerDTO
+                    .Where(x => x.Id == id)
+                    .FirstOrDefault();
                 return dto;
             }
             catch (Exception ex)
