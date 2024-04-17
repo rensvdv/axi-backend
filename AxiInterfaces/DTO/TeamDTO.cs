@@ -10,13 +10,13 @@ namespace AxiInterfaces.DTO
     {
         public int Id { get; init; }
         public string Naam { get; init; }
-        public List<GebruikerDTO> Teamleden { get; init; }
+        //public List<GebruikerDTO> Teamleden { get; init; }
 
-        public TeamDTO(int id, String naam, List<GebruikerDTO> teamleden)
+        public TeamDTO(int id, String naam/*, List<GebruikerDTO> teamleden*/)
         {
             Id = id;
             Naam = naam;
-            Teamleden = teamleden;
+            //Teamleden = teamleden;
         }
     }
 }

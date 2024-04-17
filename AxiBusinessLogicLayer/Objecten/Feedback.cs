@@ -4,18 +4,18 @@ namespace AxiBusinessLogicLayer.Entiteiten
 {
     public class Feedback
     {
-        public int Id { get; private set; }
-        public string GivenFeedback { get; private set; }
-        public List<Vraag> Vragen { get; private set; }
-        public bool Actief { get; private set; }
-        public Gebruiker Zender { get; private set; }
-        public Gebruiker Ontvanger { get; private set; }
+        public int Id { get; set; }
+        public string? GivenFeedback { get; set; }
+        //public List<Vraag> Vragen { get; private set; }
+        public bool Actief { get; set; }
+        public Gebruiker? Zender { get; set; }
+        public Gebruiker? Ontvanger { get; set; }
 
-        public Feedback(int id, string givenFeedback, List<Vraag> vragen, bool actief, Gebruiker zender, Gebruiker ontvanger)
+        public Feedback(int id, string givenFeedback/*, List<Vraag> vragen*/, bool actief, Gebruiker zender, Gebruiker ontvanger)
         {
             Id = id;
             GivenFeedback = givenFeedback;
-            Vragen = vragen;
+            //Vragen = vragen;
             Actief = actief;
             Zender = zender;
             Ontvanger = ontvanger;
@@ -36,18 +36,18 @@ namespace AxiBusinessLogicLayer.Entiteiten
             Id = dto.Id;
             GivenFeedback = dto.GivenFeedback;
 
-            List<Vraag> Vragenlijst = new List<Vraag>();
+            //List<Vraag> Vragenlijst = new List<Vraag>();
 
-            foreach (VraagDTO vraagDTO in dto.Vragen)
-            {
-                Vraag vraag = new Vraag(vraagDTO);
-                Vragenlijst.Add(vraag);
-            }
+            //foreach (VraagDTO vraagDTO in dto.Vragen)
+            //{
+            //    Vraag vraag = new Vraag(vraagDTO);
+            //    Vragenlijst.Add(vraag);
+            //}
 
-            Vragen = Vragenlijst;
+            //Vragen = Vragenlijst;
             Actief = dto.Actief;
 
-            GebruikerDTO gebruikerDTO = dto.Zender;
+            GebruikerDTO gebruikerDTO = dto.Verzender;
             Zender = new Gebruiker(gebruikerDTO);
 
             GebruikerDTO gebruikerDTO1 = dto.Ontvanger;
@@ -56,16 +56,16 @@ namespace AxiBusinessLogicLayer.Entiteiten
 
         public FeedbackDTO ToDTO(Feedback feedback)
         {
-            List<VraagDTO> vraagDTOs = new List<VraagDTO>();
-            foreach(Vraag vraag in feedback.Vragen)
-            {
-                VraagDTO vraagDTO = new VraagDTO()
-                {
-                    Kwestie = vraag.Kwestie,
-                    Antwoord = vraag.Antwoord,
-                };
-                vraagDTOs.Add(vraagDTO);
-            }
+            //List<VraagDTO> vraagDTOs = new List<VraagDTO>();
+            //foreach(Vraag vraag in feedback.Vragen)
+            //{
+            //    VraagDTO vraagDTO = new VraagDTO()
+            //    {
+            //        Kwestie = vraag.Kwestie,
+            //        Antwoord = vraag.Antwoord,
+            //    };
+            //    vraagDTOs.Add(vraagDTO);
+            //}
 
             GebruikerDTO gebruikerDTO1 = feedback.Zender.ToDTO(feedback.Zender);
 
@@ -75,9 +75,9 @@ namespace AxiBusinessLogicLayer.Entiteiten
             {
                 Id = feedback.Id,
                 GivenFeedback = feedback.GivenFeedback,
-                Vragen = vraagDTOs,
+                //Vragen = vraagDTOs,
                 Actief = feedback.Actief,
-                Zender = gebruikerDTO1,
+                Verzender = gebruikerDTO1,
                 Ontvanger = gebruikerDTO2,
             };
             return feedbackDTO;
