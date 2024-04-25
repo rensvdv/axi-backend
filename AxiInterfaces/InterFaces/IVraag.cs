@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AxiInterfaces.DTO
+namespace AxiInterfaces.InterFaces
 {
-    public record RechtenDTO
+    public interface IVraag
     {
-        public int Id { get; init; }
-        public string Name { get; init; }
     }
 }

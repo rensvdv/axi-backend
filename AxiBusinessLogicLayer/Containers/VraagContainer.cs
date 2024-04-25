@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AxiInterfaces.InterFaces;
 
 namespace AxiBusinessLogicLayer.Containers
 {
     public class VraagContainer
     {
-        public VraagContainer()
+        IVraag VraagDAL;
+        public VraagContainer(IVraag vraagDAL)
         {
-
+            VraagDAL = vraagDAL;
         }
 
         public string CreateVraag(Vraag vraag)

@@ -42,20 +42,9 @@ namespace AxiBusinessLogicLayer.Entiteiten
 
         }
 
-        public GebruikerDTO ToDTO(Gebruiker gebruiker)
+        public Gebruiker()
         {
-            //Profiel profiel = new Profiel();
-            //ProfielDTO profielDTO = profiel.ToDTO(gebruiker.Profiel);
-            GebruikerDTO gebruikerDTO = new GebruikerDTO()
-            {
-                //ProfielDTO = profielDTO,
-                Id = gebruiker.Id,
-                Name = gebruiker.Naam,
-                Email = gebruiker.Email,
-                Password = gebruiker.Password,
-                Actief = gebruiker.Actief,
-            };
-            return gebruikerDTO;
+            //
         }
     }
 }

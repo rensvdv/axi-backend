@@ -15,10 +15,10 @@ namespace AxiBusinessLogicLayer.Containers
         IFeedback FeedbackDAL;
         IGebruiker GebruikerDAL;
 
-        public FeedbackContainer(IFeedback DAL, IGebruiker GebruikerDAL)
+        public FeedbackContainer(IFeedback DAL, IGebruiker gebruikerDAL)
         {
             FeedbackDAL = DAL;
-            GebruikerDAL = GebruikerDAL;
+            GebruikerDAL = gebruikerDAL;
         }
 
         public bool MaakFeedback(Feedback feedback)
@@ -69,7 +69,7 @@ namespace AxiBusinessLogicLayer.Containers
             bool result = false;
             try
             {
-                FeedbackDTO feedbackDTO = feedback.ToDTO(feedback);
+                FeedbackDTO feedbackDTO = ToDTO(feedback);
                 result = FeedbackDAL.Archiveer(feedbackDTO);
                 return result;
             }
