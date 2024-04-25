@@ -169,19 +169,18 @@ namespace AxiUnitTests.UnitTests
         [DataRow(4, "", true, false)]
         public void TestUpdateFeedbcak(int id, string givenfeedback, bool actief, bool expected)
         {
-            ////Arrange
-            //FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-            //FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
-            //List<Vraag> vraaglijst = new List<Vraag>();
-            //Profiel profiel = new Profiel();
-            //Gebruiker gebruiker = new Gebruiker();
-            //Feedback feedback = new Feedback(id, givenfeedback, actief, gebruiker, gebruiker);
+            //Arrange
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
 
-            ////Act
-            //bool result = feedbackcontainer.UpdateFeedback(feedback);
+            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+            Gebruiker gebruiker = new Gebruiker();
+            Feedback feedback = new Feedback(id, givenfeedback, actief, gebruiker, gebruiker);
 
-            ////Assert
-            //Assert.AreEqual(result, expected);
+            //Act
+            bool result = feedbackcontainer.UpdateFeedback(feedback);
+
+            //Assert
+            Assert.AreEqual(result, expected);
         }
 
         //[TestMethod]

@@ -21,6 +21,11 @@ namespace AxiBusinessLogicLayer.Containers
             GebruikerDAL = gebruikerDAL;
         }
 
+        public FeedbackContainer(IFeedback DAL)
+        {
+            FeedbackDAL = DAL;
+        }
+
         public bool MaakFeedback(Feedback feedback)
         {
             try
@@ -60,6 +65,7 @@ namespace AxiBusinessLogicLayer.Containers
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }
