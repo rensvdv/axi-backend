@@ -10,5 +10,6 @@ namespace AxiInterfaces.InterFaces
     public interface IGebruiker
     {
         public GebruikerDTO GetUserById(int Id);
+        public List<GebruikerDTO> GetAll();
     }
 }

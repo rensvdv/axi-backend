@@ -11,6 +11,21 @@ namespace AxiDal
 {
     public class GebruikerDAL : DbContext, IGebruiker
     {
+        public List<GebruikerDTO> GetAll()
+        {
+            using var db = new SetUp();
+            try
+            {
+                List<GebruikerDTO> gebruikerDTOs = db.GebruikerDTO.ToList();
+                return gebruikerDTOs;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public GebruikerDTO GetUserById(int id)
         {
             using var db = new SetUp();
