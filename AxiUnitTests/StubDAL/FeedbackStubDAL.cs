@@ -136,44 +136,38 @@ namespace AxiUnitTests.StubDAL
         {
             GivenId = id;
 
-            VraagDTO vraag = new VraagDTO()
-            {
-                Kwestie = "Test Kwestie",
-                //Antwoord = "Test Antwoord"
-            };
-            List<VraagDTO> vraagList = new List<VraagDTO>() { vraag };
-            ProfielDTO profiel = new ProfielDTO();
             GebruikerDTO gebruiker = new GebruikerDTO()
             {
-                //ProfielDTO = profiel
+                Id = 1,
+                Name = "Test naam",
+                Email = "Test@Naam.com",
+                Password = "Password",
+                Actief = true
             };
 
             FeedbackDTO feedback1 = new FeedbackDTO()
             {
                 Id = 1,
                 GivenFeedback = "Test1",
-                //Vragen = vraagList,
                 Actief = true,
-                //VerzenderId = gebruiker,
-                //Ontvanger = gebruiker
+                VerzenderId = gebruiker.Id,
+                OntvangerId = gebruiker.Id
             };
             FeedbackDTO feedback2 = new FeedbackDTO()
             {
                 Id = 2,
                 GivenFeedback = "Test2",
-                //Vragen = vraagList,
                 Actief = true,
-                //Verzender = gebruiker,
-                //Ontvanger = gebruiker
+                VerzenderId = gebruiker.Id,
+                OntvangerId = gebruiker.Id
             };
             FeedbackDTO feedback3 = new FeedbackDTO()
             {
                 Id = 3,
                 GivenFeedback = "Test3",
-                //Vragen = vraagList,
                 Actief = false,
-                //Verzender = gebruiker,
-                //Ontvanger = gebruiker
+                VerzenderId = gebruiker.Id,
+                OntvangerId = gebruiker.Id
             };
 
             List<FeedbackDTO> feedbackDTOs = new List<FeedbackDTO>() { feedback1, feedback2, feedback3 };

@@ -21,6 +21,11 @@ namespace AxiBusinessLogicLayer.Entiteiten
         public string? Password { get; set; }
         public bool Actief { get; set; }
 
+        public Gebruiker()
+        {
+
+        }
+
         public Gebruiker(int id, string naam, string email, string password, bool actief)
         { 
             Id = id;

@@ -72,9 +72,8 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading Personal feedback.");
                 List<FeedbackDTO> feedback = db.FeedbackDTO
-                    .Where(f => f.Id == id)
+                    .Where(f => f.OntvangerId == id)
                     .ToList();
-
 
                 return feedback;
             }
