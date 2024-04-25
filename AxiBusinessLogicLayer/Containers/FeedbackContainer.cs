@@ -120,8 +120,8 @@ namespace AxiBusinessLogicLayer.Containers
 
         public Feedback ToFeedback(FeedbackDTO feedbackDTO)
         {
-            GebruikerDTO gebruikerDTO1 = gebruikerDAL.GetUserById(feedbackDTO.VerzenderId);
-            GebruikerDTO gebruikerDTO2 = gebruikerDAL.GetUserById(feedbackDTO.OntvangerId);
+            GebruikerDTO gebruikerDTO1 = GebruikerDAL.GetUserById(feedbackDTO.VerzenderId);
+            GebruikerDTO gebruikerDTO2 = GebruikerDAL.GetUserById(feedbackDTO.OntvangerId);
 
             GebruikerContainer gebruikerContainer = new GebruikerContainer();
 

@@ -46,10 +46,5 @@ namespace AxiBusinessLogicLayer.Entiteiten
             Actief = gebruikerDTO.Actief;
 
         }
-
-        public Gebruiker()
-        {
-            //
-        }
     }
 }
