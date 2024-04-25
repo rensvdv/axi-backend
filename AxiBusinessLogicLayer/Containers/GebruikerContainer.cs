@@ -1,5 +1,6 @@
 ﻿using AxiBusinessLogicLayer.Entiteiten;
 using AxiInterfaces.DTO;
+using AxiInterfaces.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,30 @@ namespace AxiBusinessLogicLayer.Containers
 {
     public class GebruikerContainer
     {
+        private IGebruiker? gebruikerDAL;
+
+        public GebruikerContainer(IGebruiker gebruikerDAL)
+        {
+            this.gebruikerDAL = gebruikerDAL;
+        }
+
+        public GebruikerContainer()
+        {
+
+        }
+
+        public List<Gebruiker> GetAllGebruikers()
+        {
+            List<Gebruiker> gebruikers = new List<Gebruiker>();
+            List<GebruikerDTO> gebruikerDTOs = this.gebruikerDAL.GetAll();
+
+            foreach(GebruikerDTO gebruikerDTO in gebruikerDTOs)
+            {
+                Gebruiker gebruiker = this.ToGebruiker(gebruikerDTO);
+                gebruikers.Add(gebruiker);
+            }
+            return gebruikers;
+        }
         public Gebruiker ToGebruiker(GebruikerDTO gebruikerDTO)
         {
             Gebruiker gebruiker = new Gebruiker(
