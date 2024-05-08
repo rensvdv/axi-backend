@@ -18,12 +18,8 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
-
-
-                var teamId = 123; // Replace with the desired TeamId
-
                 List<GebruikerTeamProfielDTO> gebruikerTeamProfielDtos = db.gebruikerTeamProfielDTO
-                    .Where(GebruikerTeamProfielDTO => GebruikerTeamProfielDTO.TeamId == teamId)
+                    .Where(GebruikerTeamProfielDTO => GebruikerTeamProfielDTO.TeamId == teamid)
                     .ToList();
 
                 List<FeedbackDTO> feedback = new List<FeedbackDTO>();
