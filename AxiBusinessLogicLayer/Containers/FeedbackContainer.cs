@@ -110,6 +110,27 @@ namespace AxiBusinessLogicLayer.Containers
             }
         }
 
+        public List<Feedback> GetZenderFeedback(int id)
+        {
+            List<Feedback> feedbacks = new List<Feedback>();
+
+            try
+            {
+                List<FeedbackDTO> feedbackDTOs = FeedbackDAL.GetZenderFeedback(id);
+                foreach (FeedbackDTO feedbackDTO in feedbackDTOs)
+                {
+                    Feedback feedback = ToFeedback(feedbackDTO);
+                    feedbacks.Add(feedback);
+                }
+                return feedbacks;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                return null;
+            }
+        }
+
         public List<Feedback> GetGroepFeedbackAll(int groepId)
         {
             List<Feedback> groepfeedback = new List<Feedback>();

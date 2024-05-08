@@ -26,6 +26,12 @@ namespace axi_backend.Controllers
             //return new List<Feedback> { new Feedback(1, "hi", null, true, null, null) };
         }
 
+        [HttpGet("getzenderfeedback/{feedbackid}")]
+        public List<Feedback> GetZenderFeedback(int feedbackid)
+        {
+            return _container.GetZenderFeedback(feedbackid) ;
+        }
+
         [HttpPost("maakfeedback")]
         public IActionResult MaakFeedback([FromBody] Feedback feedback)
         {

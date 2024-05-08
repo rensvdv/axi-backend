@@ -80,6 +80,25 @@ namespace AxiDal
             }
         }
 
+        public List<FeedbackDTO> GetZenderFeedback(int id)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Reading Personal feedback.");
+                List<FeedbackDTO> feedback = db.FeedbackDTO
+                    .Where(f => f.VerzenderId == id)
+                    .ToList();
+
+                return feedback;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public bool UpdateFeedback(FeedbackDTO feedbackDTO)
         {
             using var db = new SetUp();
