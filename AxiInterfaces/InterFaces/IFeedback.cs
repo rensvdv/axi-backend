@@ -11,6 +11,7 @@ namespace AxiInterfaces.InterFaces
     {
         public bool MaakFeedback(FeedbackDTO feedbackDTO);
         public List<FeedbackDTO> GetMijnFeedback(int id);
+        public List<FeedbackDTO> GetZenderFeedback(int id);
         public List<FeedbackDTO> GetGroepFeedbackAll(int groepId);
         public bool UpdateFeedback(FeedbackDTO feedbackDTO);
         public bool Archiveer(FeedbackDTO feedbackDTO);
