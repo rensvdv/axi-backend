@@ -12,6 +12,11 @@ namespace AxiUnitTests.StubDAL
     {
         public int givenId { get; set; }
 
+        public List<GebruikerDTO> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public GebruikerDTO GetUserById(int Id)
         {
             givenId = Id;

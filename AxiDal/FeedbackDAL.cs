@@ -18,28 +18,24 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
+
+
+                var teamId = 123; // Replace with the desired TeamId
+
+                List<GebruikerTeamProfielDTO> gebruikerTeamProfielDtos = db.gebruikerTeamProfielDTO
+                    .Where(GebruikerTeamProfielDTO => GebruikerTeamProfielDTO.TeamId == teamId)
+                    .ToList();
+
+                List<FeedbackDTO> feedback = new List<FeedbackDTO>();
+
+                foreach (GebruikerTeamProfielDTO gebruikerTeamProfielDto in gebruikerTeamProfielDtos)
+                {
+                    feedback = db.FeedbackDTO
+                        .Where(FeedbackDTO => FeedbackDTO.OntvangerId == gebruikerTeamProfielDto.GebruikerId)
+                        .ToList();
+                }
                 
-
-                //var teamId = 123; // Replace with the desired TeamId
-
-               // var feedbackQuery = from team in db.TeamDTO
-               //                     join gebruikerTeam in db.gebruikerTeamProfielDTO
-               //                         on team.Id equals gebruikerTeam.TeamId
-               //                     join gebruiker in db.GebruikerDTO
-               //                         on gebruikerTeam.GebruikerId equals gebruiker.Id
-               //                     join feedback in db.FeedbackDTO
-               //                         on gebruiker.Id equals feedback.Id
-               //                     where team.Id == teamid
-               //                     select new FeedbackDTO
-               //                     {
-               //                         Id = feedback.Id,
-               //                         GivenFeedback = feedback.GivenFeedback,
-               //                         Actief = feedback.Actief,
-               //                         Verzender = feedback.Verzender,
-               //                         Ontvanger = feedback.Ontvanger
-               //                     };
-               //return feedbackQuery.ToList();
-               throw new NotImplementedException();
+                return feedback;
             }
             catch (Exception ex)
             {
@@ -77,7 +73,7 @@ namespace AxiDal
 
                 return feedback;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -117,7 +113,7 @@ namespace AxiDal
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex); 
+                Console.WriteLine(ex);
                 return false;
             }
         }
