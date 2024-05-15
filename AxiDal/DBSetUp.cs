@@ -11,6 +11,9 @@ public class SetUp : DbContext
     public DbSet<ProfielDTO> ProfielDTO { get; set; }
     public DbSet<TeamDTO> TeamDTO { get; set; }
     public DbSet<VraagDTO> VraagDTO { get; set; }
+    public DbSet<LijstDTO> LijstDTO { get; set; }
+    public DbSet<TeamLijstDTO> TeamLijstDTO { get; set; }
+    public DbSet<VraagLijstDTO> VraagLijstDTO { get; set; }
     public DbSet<GebruikerTeamProfielDTO> gebruikerTeamProfielDTO { get; set; }
 
     public SetUp()
@@ -23,6 +26,9 @@ public class SetUp : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Ignore<GebruikerTeamProfielDTO>(); // Ignore GebruikerTeamProfielDTO
+        modelBuilder.Ignore<VraagLijstDTO>(); // Ignore VraagLijstDTO
+        modelBuilder.Ignore<TeamLijstDTO>(); // Ignore TeamLijstDTO
+
 
         base.OnModelCreating(modelBuilder);
     }
