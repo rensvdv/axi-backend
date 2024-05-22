@@ -1,8 +1,11 @@
 using AxiBusinessLogicLayer.Containers;
 using AxiBusinessLogicLayer.Entiteiten;
 using AxiInterfaces.DTO;
+using AxiInterfaces.InterFaces;
 using AxiUnitTests.StubDAL;
+using System;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace AxiUnitTests.UnitTests
 {
@@ -115,19 +118,34 @@ namespace AxiUnitTests.UnitTests
         [DataRow(4, "", true, false)]
         public void TestMaakFeedback(int id, string givenfeedback, bool actief, bool expected)
         {
-            ////Arrange
-            //FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-            //FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
-            //List<Vraag> vraaglijst = new List<Vraag>();
-            //Profiel profiel = new Profiel();
-            //Gebruiker gebruiker = new Gebruiker();
-            //Feedback feedback = new Feedback(id, givenfeedback, actief, gebruiker, gebruiker);
+            //Arrange
+            FeedbackStubDAL feedbackStubDAL = new FeedbackStubDAL();
+            GebruikerStubDAL gebruikerStubDAL = new GebruikerStubDAL();
+            FeedbackContainer feedbackContainer = new FeedbackContainer(feedbackStubDAL, gebruikerStubDAL);
 
-            ////Act
-            //bool result = feedbackcontainer.MaakFeedback(feedback);
+            Gebruiker gebruiker = new Gebruiker(1, "Test naam", "Test@Naam.com", "Password", true);
+            Feedback feedback = new Feedback()
+            {
+                Id = id,
+                GivenFeedback = givenfeedback,
+                Actief = actief,
+                Ontvanger = gebruiker,
+                Zender = gebruiker
+            };
 
-            ////Assert
-            //Assert.AreEqual(result, expected);
+            //Act
+            bool result = feedbackContainer.MaakFeedback(feedback);
+
+            //Assert
+            Assert.AreEqual(expected, result);
+            if (result == true)
+            {
+                Assert.AreEqual(feedback.Id, feedbackStubDAL.Id);
+                Assert.AreEqual(feedback.GivenFeedback, feedbackStubDAL.GivenFeedback);
+                Assert.AreEqual(feedback.Actief, feedbackStubDAL.Actief);
+                Assert.AreEqual(feedback.Ontvanger.Id, feedbackStubDAL.Ontvanger);
+                Assert.AreEqual(feedback.Zender.Id, feedbackStubDAL.Zender);
+            }
         }
 
         [TestMethod]
@@ -181,26 +199,78 @@ namespace AxiUnitTests.UnitTests
 
             //Assert
             Assert.AreEqual(result, expected);
+            if (result == true)
+            {
+                Assert.AreEqual(feedback.Id, stubDAL.Id);
+                Assert.AreEqual(feedback.GivenFeedback, stubDAL.GivenFeedback);
+                Assert.AreEqual(feedback.Actief, stubDAL.Actief);
+                Assert.AreEqual(feedback.Ontvanger.Id, stubDAL.Ontvanger);
+                Assert.AreEqual(feedback.Zender.Id, stubDAL.Zender);
+            }
         }
 
-        //[TestMethod]
-        //[DataRow(6, "Testing", true, true)]
-        //[DataRow(6, "Testen", true, false)]
-        //public void ArchiveerFeedback(int id, string givenfeedback, bool actief, bool expected) 
-        //{
-        //    //Arrange
-        //    FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-        //    FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
-        //    List<Vraag> vraaglijst = new List<Vraag>();
-        //    Profiel profiel = new Profiel();
-        //    Gebruiker gebruiker = new Gebruiker();
-        //    Feedback feedback = new Feedback(id, givenfeedback, actief, gebruiker, gebruiker);
+        [TestMethod]
+        [DataRow(6, "Testing", true, true)]
+        public void ArchiveerFeedback(int id, string givenfeedback, bool actief, bool expected)
+        {
+            //Arrange
+            FeedbackStubDAL stubDAL = new FeedbackStubDAL();
 
-        //    //Act
-        //    bool result = feedbackcontainer.Archiveren(feedback);
+            FeedbackContainer feedbackcontainer = new FeedbackContainer(stubDAL);
+            Gebruiker gebruiker = new Gebruiker();
+            Feedback feedback = new Feedback(id, givenfeedback, actief, gebruiker, gebruiker);
 
-        //    //Assert
-        //    Assert.AreEqual(result, expected);
-        //}
+            //Act
+            bool result = feedbackcontainer.Archiveren(feedback);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+            Assert.IsFalse(stubDAL.Actief);
+        }
+
+        [TestMethod]
+        public void GetZenderFeedback()
+        {
+            //Arrange
+            Gebruiker gebruiker = new Gebruiker(1, "Test naam", "Test@Naam.com", "Password", true);
+
+            GebruikerStubDAL gebruikerStubDAL = new GebruikerStubDAL();
+            FeedbackStubDAL feedbackStubDAL = new FeedbackStubDAL();
+            FeedbackContainer container = new FeedbackContainer(feedbackStubDAL, gebruikerStubDAL);
+
+            Feedback feedback1 = new Feedback()
+            {
+                Id = 1,
+                GivenFeedback = "Test1",
+                Actief = true,
+                Zender = gebruiker,
+                Ontvanger = gebruiker
+            };
+
+            Feedback feedback2 = new Feedback()
+            {
+                Id = 2,
+                GivenFeedback = "Test2",
+                Actief = true,
+                Zender = gebruiker,
+                Ontvanger = gebruiker
+            };
+
+            //Act
+            List<Feedback> feedback = container.GetZenderFeedback(1);
+
+            //Assert
+            Assert.AreEqual(1, feedbackStubDAL.GivenId);
+            Assert.AreEqual(feedback1.Id, feedback[0].Id);
+            Assert.AreEqual(feedback1.GivenFeedback, feedback[0].GivenFeedback);
+            Assert.AreEqual(feedback1.Actief, feedback[0].Actief);
+            Assert.AreEqual(feedback1.Zender.Id, feedback[0].Zender.Id);
+            Assert.AreEqual(feedback1.Ontvanger.Id, feedback[0].Ontvanger.Id);
+            Assert.AreEqual(feedback2.Id, feedback[1].Id);
+            Assert.AreEqual(feedback2.GivenFeedback, feedback[1].GivenFeedback);
+            Assert.AreEqual(feedback2.Actief, feedback[1].Actief);
+            Assert.AreEqual(feedback2.Zender.Id, feedback[1].Zender.Id);
+            Assert.AreEqual(feedback2.Ontvanger.Id, feedback[1].Ontvanger.Id);
+        }
     }
 }

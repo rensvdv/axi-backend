@@ -11,125 +11,53 @@ namespace AxiUnitTests.StubDAL
 {
     public class FeedbackStubDAL : IFeedback
     {
-        public int Id { get; private set; }
-        public string GivenFeedback { get; private set; }
-        public List<VraagDTO> Vragen { get; private set; }
-        public bool Actief { get; private set; }
-        public GebruikerDTO Zender { get; private set; }
-        public GebruikerDTO Ontvanger { get; private set; }
+        public int Id { get; set; }
+        public string GivenFeedback { get; set; }
+        public bool Actief { get; set; }
+        public int Zender { get; set; }
+        public int Ontvanger { get; set; }
 
-        public int GivenId { get; private set; }
+        public int GivenId { get; set; }
 
         public List<FeedbackDTO> GetGroepFeedbackAll(int groepId)
         {
             GivenId = groepId;
 
-            //MockVraag
-            VraagDTO vraag = new()
-            {
-                Kwestie = "Test Kwestie",
-                //Antwoord = "Test Antwoord"
-            };
-            List<VraagDTO> vraagList = new() { vraag };
-
-            //Gebruikers voor teams
-            ProfielDTO profiel = new();
-            GebruikerDTO gebruiker = new()
+            GebruikerDTO gebruiker = new GebruikerDTO()
             {
                 Id = 1,
-                //ProfielDTO = profiel
-            };
-            GebruikerDTO gebruiker2 = new()
-            {
-                Id = 2,
-                //ProfielDTO = profiel
-            };
-            GebruikerDTO gebruiker3 = new()
-            {
-                Id = 3,
-                //ProfielDTO = profiel
-            };
-            GebruikerDTO gebruiker4 = new()
-            {
-                Id = 4,
-                //ProfielDTO = profiel
+                Name = "MAAAAAAAAAAAAAAAAAAAAAAAAAAMWAWOWOWOW",
+                Email = "SNOEP@PINGAS.com",
+                Actief = true
             };
 
-            //Teams
-            List<GebruikerDTO> teamleden1 = new() { gebruiker, gebruiker2, gebruiker4 };
-            List<GebruikerDTO> teamleden2 = new() { gebruiker, gebruiker3 };
-            TeamDTO team1 = new(1, "Team1", "");
-            TeamDTO team2 = new(2, "Team2", "");
-
-            //Lijst aan teams
-            List<TeamDTO> teamDTOs = new() { team1, team2 };
-
-            //Lijst aan feedback
-            FeedbackDTO feedback1 = new()
+            FeedbackDTO feedback1 = new FeedbackDTO()
             {
                 Id = 1,
                 GivenFeedback = "Test1",
-                //Vragen = vraagList,
                 Actief = true,
-                //Verzender = gebruiker,
-                //Ontvanger = gebruiker
+                VerzenderId = gebruiker.Id,
+                OntvangerId = gebruiker.Id
             };
-            FeedbackDTO feedback2 = new()
+            FeedbackDTO feedback2 = new FeedbackDTO()
             {
                 Id = 2,
                 GivenFeedback = "Test2",
-                //Vragen = vraagList,
                 Actief = true,
-                //Verzender = gebruiker2,
-                //Ontvanger = gebruiker
+                VerzenderId = gebruiker.Id,
+                OntvangerId = gebruiker.Id
             };
-            FeedbackDTO feedback3 = new()
+            FeedbackDTO feedback3 = new FeedbackDTO()
             {
                 Id = 3,
                 GivenFeedback = "Test3",
-                //Vragen = vraagList,
                 Actief = false,
-                //Verzender = gebruiker3,
-                //Ontvanger = gebruiker
+                VerzenderId = gebruiker.Id,
+                OntvangerId = gebruiker.Id
             };
-            FeedbackDTO feedback4 = new()
-            {
-                Id = 4,
-                GivenFeedback = "Test4",
-                //Vragen = vraagList,
-                Actief = true,
-                //Verzender = gebruiker4,
-                //Ontvanger = gebruiker
-            };
-            List<FeedbackDTO> feedbackDTOs = new() { feedback1, feedback2, feedback3, feedback4 };
 
-            //Zoekt naar de gekozen team via groepId in de constructor
-            TeamDTO gekozenTeam = null;
-            foreach (TeamDTO teamDTO in teamDTOs)
-            {
-                if(teamDTO.Id == groepId)
-                {
-                    gekozenTeam = teamDTO;
-                }
-            }
-
-            //Zoekt naar alle feedback van de teamleden
-            List<FeedbackDTO> feedbackTeam = null;
-            //if (gekozenTeam != null)
-            //{
-            //    feedbackTeam = new();
-            //    foreach (GebruikerDTO gebruikerDTO in gekozenTeam.Teamleden)
-            //    {
-            //        foreach (FeedbackDTO feedbackDTO in feedbackDTOs)
-            //        {
-            //            if(gebruikerDTO.Id == feedbackDTO.Verzender.Id)
-            //            {
-            //                feedbackTeam.Add(feedbackDTO);
-            //            }
-            //        }
-            //    }
-            //}
-            return feedbackTeam;
+            List<FeedbackDTO> feedbackDTOs = new List<FeedbackDTO>() { feedback1, feedback2, feedback3 };
+            return feedbackDTOs;
         }
 
         public List<FeedbackDTO> GetMijnFeedback(int id)
@@ -176,17 +104,85 @@ namespace AxiUnitTests.StubDAL
 
         public bool MaakFeedback(FeedbackDTO feedbackDTO)
         {
+            Id = feedbackDTO.Id;
+            GivenFeedback = feedbackDTO.GivenFeedback;
+            Actief = feedbackDTO.Actief;
+            Zender = feedbackDTO.VerzenderId;
+            Ontvanger = feedbackDTO.OntvangerId;
+
             return true;
         }
 
         public bool UpdateFeedback(FeedbackDTO feedbackDTO)
         {
+            Id = feedbackDTO.Id;
+            GivenFeedback = feedbackDTO.GivenFeedback;
+            Actief = feedbackDTO.Actief;
+            Zender = feedbackDTO.VerzenderId;
+            Ontvanger = feedbackDTO.OntvangerId;
+
             return true;
         }
 
         public bool Archiveer(FeedbackDTO feedbackDTO)
         {
+            Id = feedbackDTO.Id;
+            GivenFeedback = feedbackDTO.GivenFeedback;
+            Actief = false;
+            Zender = feedbackDTO.VerzenderId;
+            Ontvanger = feedbackDTO.OntvangerId;
             return true;
+        }
+
+        public List<FeedbackDTO> GetZenderFeedback(int id)
+        {
+            GivenId = id;
+
+            GebruikerDTO gebruiker1 = new GebruikerDTO()
+            {
+                Id = 1,
+                Name = "Test naam",
+                Email = "Test@Naam.com",
+                Password = "Password",
+                Actief = true
+            };
+
+            //GebruikerDTO gebruiker2 = new GebruikerDTO()
+            //{
+            //    Id = 2,
+            //    Name = "blbos",
+            //    Email = "drddr@frog.com",
+            //    Password = "Password2",
+            //    Actief = true
+            //};
+
+            FeedbackDTO feedback1 = new FeedbackDTO()
+            {
+                Id = 1,
+                GivenFeedback = "Test1",
+                Actief = true,
+                VerzenderId = gebruiker1.Id,
+                OntvangerId = gebruiker1.Id
+            };
+            FeedbackDTO feedback2 = new FeedbackDTO()
+            {
+                Id = 2,
+                GivenFeedback = "Test2",
+                Actief = true,
+                VerzenderId = gebruiker1.Id,
+                OntvangerId = gebruiker1.Id
+            };
+            FeedbackDTO feedback3 = new FeedbackDTO()
+            {
+                Id = 3,
+                GivenFeedback = "Test3",
+                Actief = false,
+                VerzenderId = gebruiker1.Id,
+                OntvangerId = gebruiker1.Id
+            };
+
+            List<FeedbackDTO> feedbackDTOs = new List<FeedbackDTO>() { feedback1, feedback2 };
+            return feedbackDTOs;
         }
     }
 }
