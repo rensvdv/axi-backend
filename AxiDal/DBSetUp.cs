@@ -22,7 +22,8 @@ public class SetUp : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Ignore<GebruikerTeamProfielDTO>(); // Ignore GebruikerTeamProfielDTO
+        //modelBuilder.Ignore<GebruikerTeamProfielDTO>(); // Ignore GebruikerTeamProfielDTO
+        modelBuilder.Entity<GebruikerTeamProfielDTO>().HasNoKey();
 
         base.OnModelCreating(modelBuilder);
     }
