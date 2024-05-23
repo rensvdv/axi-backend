@@ -29,7 +29,7 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = IGebruiker.MaakGebruiker(gebruikerDTO);
+                result = this.gebruikerDAL.MaakGebruiker(gebruikerDTO);
                 return result;
             }
             catch (Exception e)
@@ -45,7 +45,7 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = IGebruiker.UpdateGebruiker(gebruikerDTO);
+                result = this.gebruikerDAL.UpdateGebruiker(gebruikerDTO);
                 return result;
             }
             catch (Exception e)
@@ -61,7 +61,7 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = IGebruiker.VerwijderGebruiker(gebruikerDTO);
+                result = this.gebruikerDAL.VerwijderGebruiker(gebruikerDTO);
                 return result;
             }
             catch (Exception e)

@@ -42,5 +42,59 @@ namespace AxiDal
                 return null;
             }
         }
+
+        public bool MaakGebruiker(GebruikerDTO gebruikerDTO)
+        {
+            using var db = new SetUp();
+
+            try
+            {
+                Console.WriteLine("Gebruiker aanmaken");
+                db.Add(gebruikerDTO);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool UpdateGebruiker(GebruikerDTO gebruikerDTO)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Gebruiker bijwerken");
+                db.Attach(gebruikerDTO);
+                db.Entry(gebruikerDTO).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruiker(GebruikerDTO gebruikerDTO)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Gebruiker verwijderen");
+                db.Remove(gebruikerDTO);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
     }
 }
