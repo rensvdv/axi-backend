@@ -23,6 +23,54 @@ namespace AxiBusinessLogicLayer.Containers
 
         }
 
+        public bool MaakGebruiker(Gebruiker gebruiker)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
+                result = IGebruiker.MaakGebruiker(gebruikerDTO);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool UpdateGebruiker(Gebruiker gebruiker)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
+                result = IGebruiker.UpdateGebruiker(gebruikerDTO);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruiker(Gebruiker gebruiker)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
+                result = IGebruiker.VerwijderGebruiker(gebruikerDTO);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
         public List<Gebruiker> GetAllGebruikers()
         {
             List<Gebruiker> gebruikers = new List<Gebruiker>();
