@@ -18,19 +18,7 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
-                List<TeamLijstDTO> TeamLijstDTOs = db.TeamLijstDTO
-                    .Where(TeamLijstDTO => TeamLijstDTO.TeamId == teamId)
-                    .ToList();
-
-                List<LijstDTO> Lijsten = new List<LijstDTO>();
-
-                foreach (TeamLijstDTO TeamLijstDTO in TeamLijstDTOs)
-                {
-                    Lijsten.AddRange(db.LijstDTO
-                        .Where(LijstDTO => LijstDTO.Id == TeamLijstDTO.LijstId)
-                        .ToList());
-                }
-
+                List<LijstDTO> Lijsten = db.LijstDTO.Join(db.TeamLijstDTO, lijst => lijst.Id, teamlijst => teamlijst.LijstId, (lijst, teamlijst) => new { lijst, teamlijst }).Where(dto => dto.teamlijst.TeamId == teamId).Select(lijst => lijst.lijst).ToList();
                 return Lijsten;
             }
             catch (Exception ex)

@@ -18,6 +18,8 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
+                var help = db.FeedbackDTO.Join(db.gebruikerTeamProfielDTO, feedback => feedback.VerzenderId, gebruikerTeamProfiel => gebruikerTeamProfiel.GebruikerId, (feedback, gebruikerTeamProfiel) => new { feedback, gebruikerTeamProfiel }).Join(db.gebruikerTeamProfielDTO, feedback => feedback.feedback.OntvangerId, gebruikerTeamProfiel => gebruikerTeamProfiel.GebruikerId, (feedback, gebruikerTeamProfiel) => new { feedback, gebruikerTeamProfiel }).Where(dto => dto.gebruikerTeamProfiel.TeamId == teamid).ToList();
+
                 List<GebruikerTeamProfielDTO> gebruikerTeamProfielDtos = db.gebruikerTeamProfielDTO
                     .Where(GebruikerTeamProfielDTO => GebruikerTeamProfielDTO.TeamId == teamid)
                     .ToList();

@@ -9,8 +9,8 @@ namespace AxiBusinessLogicLayer.Objecten
 {
     public class Lijst
     {
-        int Id { get; set; }
-        string Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         List<Vraag> Vragen {  get; set; }
         public Lijst(int id, string name, List<Vraag> vragen)
         {

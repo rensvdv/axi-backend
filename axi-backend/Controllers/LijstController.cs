@@ -16,8 +16,9 @@ namespace axi_backend.Controllers
             lijstContainer = new (new LijstDAL());
             _logger = logger;
         }
-        [HttpGet]
-        public List<Lijst>GetLijst(int teamId)
+
+        [HttpGet ("GetLijstenTeam/{teamId}")]
+        public List<Lijst> GetLijstenTeam(int teamId)
         {
             return lijstContainer.GetLijstenByTeamId(teamId);
         }
