@@ -10,9 +10,9 @@ namespace AxiInterfaces.DTO
     [Table("TeamLijst")]
     public record TeamLijstDTO
     {
-        [ForeignKey("TeamId")]
+        [Column("TeamId")]
         public int TeamId { get; set; }
-        [ForeignKey("LijstId")]
+        [Column("LijstId")]
         public int LijstId { get; set; }
     }
 }
