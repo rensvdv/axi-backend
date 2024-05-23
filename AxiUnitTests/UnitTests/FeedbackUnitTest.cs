@@ -13,105 +13,43 @@ namespace AxiUnitTests.UnitTests
     public class FeedbackUnitTest
     {
         [TestMethod]
-        public void TestGetGroep1Feedback()
+        [DataRow(4)]
+        [DataRow(5)]
+        public void TestGetGroepFeedback(int id)
         {
-            ////Arrange
-            //int groepId = 1;
+            //Arrange
+            FeedbackStubDAL feedbackStubDal = new FeedbackStubDAL();
+            FeedbackContainer container = new FeedbackContainer((feedbackStubDal));
 
-            //FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-            //FeedbackContainer feedbackContainer = new FeedbackContainer(stubDAL);
+            Gebruiker gebruiker = new Gebruiker(1, "MAAAAAAAAAAAAAAAAAAAAAAAAAAMWAWOWOWOW", "SNOEP@PINGAS.com", "Mamamia", true);
+            Feedback feedback1 = new Feedback(1, "Test1", true, gebruiker, gebruiker);
+            Feedback feedback2 = new Feedback(2, "Test2", true, gebruiker, gebruiker);
+            Feedback feedback3 = new Feedback(3, "Test3", false, gebruiker, gebruiker);
 
-            //int expectedCount = 3;
+            //Act
+            List<Feedback> feedback = container.GetGroepFeedbackAll(id);
 
-            //Vraag vraag = new Vraag("Test Kwestie", "Test Antwoord");
-            //List<Vraag> vraagList = new List<Vraag>() { vraag };
-            //Profiel profiel = new Profiel();
-            //Gebruiker gebruiker = new Gebruiker();
-            //Feedback feedback1 = new Feedback(1, "Test1", true, gebruiker, gebruiker);
-            //Feedback feedback2 = new Feedback(2, "Test2", true, gebruiker, gebruiker);
-            //Feedback feedback3 = new Feedback(4, "Test4", true, gebruiker, gebruiker);
+            //Assert
+            Assert.AreEqual(id, feedbackStubDal.GivenId);
 
-            ////Act
-            //List<Feedback> feedback = feedbackContainer.GetGroepFeedbackAll(groepId);
+            Assert.AreEqual(feedback1.Id, feedback[0].Id);
+            Assert.AreEqual(feedback1.GivenFeedback, feedback[0].GivenFeedback);
+            Assert.AreEqual(feedback1.Actief, feedback[0].Actief);
+            Assert.AreEqual(feedback1.Zender, feedback[0].Zender);
+            Assert.AreEqual(feedback1.Ontvanger, feedback[0].Ontvanger);
 
-            ////Assert
-            //Assert.AreEqual(feedback1.Id, feedback[0].Id);
-            //Assert.AreEqual(feedback1.GivenFeedback, feedback[0].GivenFeedback);
-            ////Assert.AreEqual(feedback1.Vragen[0].Kwestie, feedback[0].Vragen[0].Kwestie);
-            ////Assert.AreEqual(feedback1.Vragen[0].Antwoord, feedback[0].Vragen[0].Antwoord);
-            //Assert.AreEqual(feedback1.Actief, feedback[0].Actief);
+            Assert.AreEqual(feedback2.Id, feedback[1].Id);
+            Assert.AreEqual(feedback2.GivenFeedback, feedback[1].GivenFeedback);
+            Assert.AreEqual(feedback2.Actief, feedback[1].Actief);
+            Assert.AreEqual(feedback2.Zender, feedback[1].Zender);
+            Assert.AreEqual(feedback2.Ontvanger, feedback[1].Ontvanger);
 
-            //Assert.AreEqual(feedback2.Id, feedback[1].Id);
-            //Assert.AreEqual(feedback2.GivenFeedback, feedback[1].GivenFeedback);
-            ////Assert.AreEqual(feedback2.Vragen[0].Kwestie, feedback[1].Vragen[0].Kwestie);
-            ////Assert.AreEqual(feedback2.Vragen[0].Antwoord, feedback[1].Vragen[0].Antwoord);
-            //Assert.AreEqual(feedback2.Actief, feedback[1].Actief);
-
-            //Assert.AreEqual(feedback3.Id, feedback[2].Id);
-            //Assert.AreEqual(feedback3.GivenFeedback, feedback[2].GivenFeedback);
-            ////Assert.AreEqual(feedback3.Vragen[0].Kwestie, feedback[2].Vragen[0].Kwestie);
-            ////Assert.AreEqual(feedback3.Vragen[0].Antwoord, feedback[2].Vragen[0].Antwoord);
-            //Assert.AreEqual(feedback3.Actief, feedback[2].Actief);
-
-            //Assert.AreEqual(expectedCount, feedback.Count);
-            //Assert.AreEqual(groepId, stubDAL.GivenId);
+            Assert.AreEqual(feedback3.Id, feedback[2].Id);
+            Assert.AreEqual(feedback3.GivenFeedback, feedback[2].GivenFeedback);
+            Assert.AreEqual(feedback3.Actief, feedback[2].Actief);
+            Assert.AreEqual(feedback3.Zender, feedback[2].Zender);
+            Assert.AreEqual(feedback3.Ontvanger, feedback[2].Ontvanger);
         }
-
-        [TestMethod]
-        public void TestGetGroep2Feedback()
-        {
-            ////Arrange
-            //int groepId = 2;
-
-            //FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-            //FeedbackContainer feedbackContainer = new FeedbackContainer(stubDAL);
-
-            //Vraag vraag = new Vraag("Test Kwestie", "Test Antwoord");
-            //List<Vraag> vraagList = new List<Vraag>() { vraag };
-            //Profiel profiel = new Profiel();
-            //Gebruiker gebruiker = new Gebruiker();
-            //Feedback feedback1 = new Feedback(1, "Test1", true, gebruiker, gebruiker);
-            //Feedback feedback2 = new Feedback(3, "Test3", false, gebruiker, gebruiker);
-
-            //int expectedCount = 2;
-
-            ////Act
-            //List<Feedback> feedback = feedbackContainer.GetGroepFeedbackAll(groepId);
-
-            ////Assert
-            //Assert.AreEqual(feedback1.Id, feedback[0].Id);
-            //Assert.AreEqual(feedback1.GivenFeedback, feedback[0].GivenFeedback);
-            ////Assert.AreEqual(feedback1.Vragen[0].Kwestie, feedback[0].Vragen[0].Kwestie);
-            ////Assert.AreEqual(feedback1.Vragen[0].Antwoord, feedback[0].Vragen[0].Antwoord);
-            //Assert.AreEqual(feedback1.Actief, feedback[0].Actief);
-
-            //Assert.AreEqual(feedback2.Id, feedback[1].Id);
-            //Assert.AreEqual(feedback2.GivenFeedback, feedback[1].GivenFeedback);
-            ////Assert.AreEqual(feedback2.Vragen[0].Kwestie, feedback[1].Vragen[0].Kwestie);
-            ////Assert.AreEqual(feedback2.Vragen[0].Antwoord, feedback[1].Vragen[0].Antwoord);
-            //Assert.AreEqual(feedback2.Actief, feedback[1].Actief);
-
-            //Assert.AreEqual(expectedCount, feedback.Count);
-            //Assert.AreEqual(groepId, stubDAL.GivenId);
-        }
-
-        [TestMethod]
-        public void TestGetGroepFeedbackAllFail()
-        {
-            ////Arrange
-            //int groepId = 3;
-
-            //FeedbackStubDAL stubDAL = new FeedbackStubDAL();
-            //FeedbackContainer feedbackContainer = new FeedbackContainer(stubDAL);
-
-            ////Act
-            //List<Feedback> feedback = feedbackContainer.GetGroepFeedbackAll(groepId);
-
-            ////Assert
-            //Assert.IsNull(feedback);
-            //Assert.AreEqual(groepId, stubDAL.GivenId);
-        }
-
 
         [TestMethod]
         [DataRow(4, "Test4", true, true)]

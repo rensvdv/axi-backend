@@ -28,6 +28,7 @@ namespace AxiUnitTests.StubDAL
                 Id = 1,
                 Name = "MAAAAAAAAAAAAAAAAAAAAAAAAAAMWAWOWOWOW",
                 Email = "SNOEP@PINGAS.com",
+                Password = "Mamamia",
                 Actief = true
             };
 
@@ -146,15 +147,6 @@ namespace AxiUnitTests.StubDAL
                 Password = "Password",
                 Actief = true
             };
-
-            //GebruikerDTO gebruiker2 = new GebruikerDTO()
-            //{
-            //    Id = 2,
-            //    Name = "blbos",
-            //    Email = "drddr@frog.com",
-            //    Password = "Password2",
-            //    Actief = true
-            //};
 
             FeedbackDTO feedback1 = new FeedbackDTO()
             {
