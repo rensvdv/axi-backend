@@ -18,8 +18,9 @@ namespace AxiUnitTests.UnitTests
         public void TestGetGroepFeedback(int id)
         {
             //Arrange
-            FeedbackStubDAL feedbackStubDal = new FeedbackStubDAL();
-            FeedbackContainer container = new FeedbackContainer((feedbackStubDal));
+            FeedbackStubDAL feedbackStubDAL = new FeedbackStubDAL();
+            GebruikerStubDAL gebruikerStubDAL = new GebruikerStubDAL();
+            FeedbackContainer feedbackContainer = new FeedbackContainer(feedbackStubDAL, gebruikerStubDAL);
 
             Gebruiker gebruiker = new Gebruiker(1, "MAAAAAAAAAAAAAAAAAAAAAAAAAAMWAWOWOWOW", "SNOEP@PINGAS.com", "Mamamia", true);
             Feedback feedback1 = new Feedback(1, "Test1", true, gebruiker, gebruiker);
@@ -27,28 +28,28 @@ namespace AxiUnitTests.UnitTests
             Feedback feedback3 = new Feedback(3, "Test3", false, gebruiker, gebruiker);
 
             //Act
-            List<Feedback> feedback = container.GetGroepFeedbackAll(id);
+            List<Feedback> feedback = feedbackContainer.GetGroepFeedbackAll(id);
 
             //Assert
-            Assert.AreEqual(id, feedbackStubDal.GivenId);
+            Assert.AreEqual(id, feedbackStubDAL.GivenId);
 
             Assert.AreEqual(feedback1.Id, feedback[0].Id);
             Assert.AreEqual(feedback1.GivenFeedback, feedback[0].GivenFeedback);
             Assert.AreEqual(feedback1.Actief, feedback[0].Actief);
-            Assert.AreEqual(feedback1.Zender, feedback[0].Zender);
-            Assert.AreEqual(feedback1.Ontvanger, feedback[0].Ontvanger);
+            Assert.AreEqual(feedback1.Zender.Id, feedback[0].Zender.Id);
+            Assert.AreEqual(feedback1.Ontvanger.Id, feedback[0].Ontvanger.Id);
 
             Assert.AreEqual(feedback2.Id, feedback[1].Id);
             Assert.AreEqual(feedback2.GivenFeedback, feedback[1].GivenFeedback);
             Assert.AreEqual(feedback2.Actief, feedback[1].Actief);
-            Assert.AreEqual(feedback2.Zender, feedback[1].Zender);
-            Assert.AreEqual(feedback2.Ontvanger, feedback[1].Ontvanger);
+            Assert.AreEqual(feedback2.Zender.Id, feedback[1].Zender.Id);
+            Assert.AreEqual(feedback2.Ontvanger.Id, feedback[1].Ontvanger.Id);
 
             Assert.AreEqual(feedback3.Id, feedback[2].Id);
             Assert.AreEqual(feedback3.GivenFeedback, feedback[2].GivenFeedback);
             Assert.AreEqual(feedback3.Actief, feedback[2].Actief);
-            Assert.AreEqual(feedback3.Zender, feedback[2].Zender);
-            Assert.AreEqual(feedback3.Ontvanger, feedback[2].Ontvanger);
+            Assert.AreEqual(feedback3.Zender.Id, feedback[2].Zender.Id);
+            Assert.AreEqual(feedback3.Ontvanger.Id, feedback[2].Ontvanger.Id);
         }
 
         [TestMethod]
