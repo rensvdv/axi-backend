@@ -17,9 +17,12 @@ namespace AxiDal
             try
             {
                 Console.WriteLine("Reading all team feedback");
-
-                List<LijstDTO> Lijsten = db.LijstDTO.Join(db.TeamLijstDTO, lijst => lijst.Id, teamlijst => teamlijst.LijstId, (lijst, teamlijst) => new { lijst, teamlijst }).Where(dto => dto.teamlijst.TeamId == teamId).Select(lijst => lijst.lijst).ToList();
-                return Lijsten;
+                var lijsten = db.TeamLijstDTO
+                    .Where(g => g.TeamId == teamId)
+                    .SelectMany(g => db.LijstDTO
+                        .Where(f => f.Id == g.LijstId))
+                    .ToList();
+                return lijsten;
             }
             catch (Exception ex)
             {
