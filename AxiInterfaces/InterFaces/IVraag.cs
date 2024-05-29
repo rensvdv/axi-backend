@@ -10,6 +10,6 @@ namespace AxiInterfaces.InterFaces
     public interface IVraag
     {
         public bool CreateVraag(VraagDTO vraagDTO);
-        public List<VraagDTO> GetVragen(int lijstId);
+        public List<VraagDTO> GetVragenLijst(int lijstId);
     }
 }

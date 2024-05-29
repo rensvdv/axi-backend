@@ -61,11 +61,11 @@ namespace AxiBusinessLogicLayer.Containers
             return e;
         }
 
-        public List<Vraag> GetVragen(int lijstId)
+        public List<Vraag> GetVragenLijst(int lijstId)
         {
             try
             {
-                List<Vraag> vragen = VraagDAL.GetVragen(lijstId).Select(vraag => ToVraag(vraag)).ToList();
+                List<Vraag> vragen = VraagDAL.GetVragenLijst(lijstId).Select(vraag => ToVraag(vraag)).ToList();
                 return vragen;
             }
             catch (Exception e)

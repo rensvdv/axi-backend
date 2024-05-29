@@ -28,26 +28,18 @@ namespace AxiDal
             }
         }
 
-        public List<VraagDTO> GetVragen(int lijstId)
+        public List<VraagDTO> GetVragenLijst(int lijstId)
         {
             using var db = new SetUp();
             try
             {
-                Console.WriteLine("Reading all lijst vragen");
-
-                List<VraagLijstDTO> VraagLijstDTOs = db.VraagLijstDTO
-                    .Where(VraagLijstDTO => VraagLijstDTO.LijstId == lijstId)
+                Console.WriteLine("Reading all vragen");
+                var lijsten = db.VraagLijstDTO
+                    .Where(g => g.LijstId == lijstId)
+                    .SelectMany(g => db.VraagDTO
+                        .Where(f => f.Id == g.VraagId))
                     .ToList();
-
-                List<VraagDTO> vragen = new List<VraagDTO>();
-                foreach (VraagLijstDTO vraagLijstDTO in VraagLijstDTOs)
-                {
-                    vragen.AddRange(db.VraagDTO
-                        .Where(VraagDTO => VraagDTO.Id == vraagLijstDTO.VraagId)
-                        .ToList());
-                }
-
-                return vragen;
+                return lijsten;
             }
             catch (Exception ex)
             {
