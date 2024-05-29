@@ -11,6 +11,9 @@ public class SetUp : DbContext
     public DbSet<ProfielDTO> ProfielDTO { get; set; }
     public DbSet<TeamDTO> TeamDTO { get; set; }
     public DbSet<VraagDTO> VraagDTO { get; set; }
+    public DbSet<LijstDTO> LijstDTO { get; set; }
+    public DbSet<TeamLijstDTO> TeamLijstDTO { get; set; }
+    public DbSet<VraagLijstDTO> VraagLijstDTO { get; set; }
     public DbSet<GebruikerTeamProfielDTO> gebruikerTeamProfielDTO { get; set; }
 
     public SetUp()
@@ -24,6 +27,8 @@ public class SetUp : DbContext
     {
         //modelBuilder.Ignore<GebruikerTeamProfielDTO>(); // Ignore GebruikerTeamProfielDTO
         modelBuilder.Entity<GebruikerTeamProfielDTO>().HasNoKey();
+        modelBuilder.Entity<VraagLijstDTO>().HasNoKey();
+        modelBuilder.Entity<TeamLijstDTO>().HasNoKey();
 
         base.OnModelCreating(modelBuilder);
     }
