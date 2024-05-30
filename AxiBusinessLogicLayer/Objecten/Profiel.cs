@@ -10,13 +10,13 @@ namespace AxiBusinessLogicLayer.Entiteiten
 {
     public class Profiel
     {
-        int Id { get; set; }
-        string ProfielNaam { get; set; }
-        List<Recht> Rechten { get; set; }
+        public int ProfielId { get; set; }
+        public string ProfielNaam { get; set; }
+        public List<Recht> Rechten { get; set; }
 
-        public Profiel(int id, string profielNaam, List<Recht> rechten)
+        public Profiel(int profielId, string profielNaam, List<Recht> rechten)
         {
-            Id = id;
+            ProfielId = profielId;
             ProfielNaam = profielNaam;
             Rechten = rechten;
         }

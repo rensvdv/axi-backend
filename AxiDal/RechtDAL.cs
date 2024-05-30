@@ -65,14 +65,45 @@ using AxiInterfaces.InterFaces;
             }
         }
 
-        public List<RechtDTO> ZoekgebruikerRechten(int gebruikerId)
+        public List<RechtDTO> ZoekGebruikerRechten(int gebruikerId)
         {
             using var db = new SetUp();
+            try
+            {
+                List<RechtDTO> rechten = db.GebruikerRechtenDTO
+                    .Where(g => g.GebruikerId == gebruikerId)
+                    .SelectMany(g => db.RechtDTO
+                        .Where(r => r.RechtId == g.RechtId))
+                    .ToList();
+
+                return rechten;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
 
         public List<RechtDTO> ZoekProfielRechten(int profielId)
         {
-            throw new NotImplementedException();
+            using var db = new SetUp();
+            try
+            {
+                List<RechtDTO> rechten = db.ProfielRechtenDTO
+                    .Where(p => p.ProfielId == profielId)
+                    .SelectMany(p => db.RechtDTO
+                        .Where(r => r.RechtId == p.RechtId))
+                    .ToList();
+
+                return rechten;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            
         }
 
         public RechtDTO ZoekRecht(int id)

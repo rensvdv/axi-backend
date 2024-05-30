@@ -112,7 +112,7 @@ namespace AxiBusinessLogicLayer.Containers
             List<Recht> rechten = new List<Recht>();
             try
             {
-                rechten = RechtDAL.ZoekgebruikerRechten(gebruikerId).Select(recht => ToRecht(recht)).ToList();
+                rechten = RechtDAL.ZoekGebruikerRechten(gebruikerId).Select(recht => ToRecht(recht)).ToList();
                 return rechten;
             }
             catch (Exception e)
@@ -125,7 +125,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                RechtDTO rechtDTO = RechtDAL.ZoekRecht(rechtid)
+                RechtDTO rechtDTO = RechtDAL.ZoekRecht(rechtid);
                 Recht recht = ToRecht(rechtDTO);
                 return recht;
             }

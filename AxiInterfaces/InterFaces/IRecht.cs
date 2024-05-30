@@ -14,7 +14,7 @@ namespace AxiInterfaces.InterFaces
         public bool VerwijderRecht(RechtDTO dto);
         public List<RechtDTO> ZoekRechten();
         public List<RechtDTO> ZoekProfielRechten(int profielId);
-        public List<RechtDTO> ZoekgebruikerRechten(int gebruikerId);
+        public List<RechtDTO> ZoekGebruikerRechten(int gebruikerId);
         public RechtDTO ZoekRecht(int rechtId);
     }
 }

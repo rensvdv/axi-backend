@@ -10,7 +10,7 @@ namespace AxiInterfaces.DTO
     public record ProfielDTO
     {
         [Column("ProfielId")]
-        public int Id { get; init; }
+        public int ProfielId { get; init; }
         [Column("Naam")]
         public string Naam { get; init; }
     }
