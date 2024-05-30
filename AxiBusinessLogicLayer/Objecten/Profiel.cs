@@ -21,14 +21,15 @@ namespace AxiBusinessLogicLayer.Entiteiten
             Rechten = rechten;
         }
 
-        public Profiel(ProfielDTO profielDTO)
+        public Profiel(string profielNaam, List<Recht> rechten)
         {
-            
+            ProfielNaam = profielNaam;
+            Rechten = rechten;
         }
 
-        public ProfielDTO ToDTO(Profiel profiel)
+        public Profiel()
         {
-            return new ProfielDTO();
+            //
         }
     }
 }

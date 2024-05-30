@@ -9,9 +9,12 @@ public class SetUp : DbContext
     public DbSet<FeedbackDTO> FeedbackDTO { get; set; }
     public DbSet<GebruikerDTO> GebruikerDTO { get; set; }
     public DbSet<ProfielDTO> ProfielDTO { get; set; }
+    public DbSet<RechtDTO> RechtDTO { get; set; }
     public DbSet<TeamDTO> TeamDTO { get; set; }
     public DbSet<VraagDTO> VraagDTO { get; set; }
     public DbSet<GebruikerTeamProfielDTO> gebruikerTeamProfielDTO { get; set; }
+    public DbSet<GebruikerRechtenDTO> GebruikerRechtenDTO { get; set; }
+    public DbSet<ProfielRechtenDTO> ProfielRechtenDTO { get; set; }
 
     public SetUp()
     {
