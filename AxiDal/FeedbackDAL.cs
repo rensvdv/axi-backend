@@ -18,19 +18,12 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
-                List<GebruikerTeamProfielDTO> gebruikerTeamProfielDtos = db.gebruikerTeamProfielDTO
+                var feedback = db.gebruikerTeamProfielDTO
                     .Where(g => g.TeamId == teamid)
+                    .SelectMany(g => db.FeedbackDTO
+                        .Where(f => f.OntvangerId == g.GebruikerId))
                     .ToList();
 
-                List<FeedbackDTO> feedback = new List<FeedbackDTO>();
-
-                foreach (GebruikerTeamProfielDTO gebruikerTeamProfielDto in gebruikerTeamProfielDtos)
-                {
-                    feedback.AddRange(db.FeedbackDTO
-                        .Where(FeedbackDTO => FeedbackDTO.OntvangerId == gebruikerTeamProfielDto.GebruikerId)
-                        .ToList());
-                }
-                
                 return feedback;
             }
             catch (Exception ex)

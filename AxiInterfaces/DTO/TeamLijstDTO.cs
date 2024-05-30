@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
-    [Table("VraagLijst")]
-    public record VraagLijstDTO
+    [Table("TeamLijst")]
+    public record TeamLijstDTO
     {
-        [Column("VraagId")]
-        public int VraagId { get; init; }
+        [Column("TeamId")]
+        public int TeamId { get; set; }
         [Column("LijstId")]
-        public int LijstId { get; init; }
+        public int LijstId { get; set; }
     }
 }

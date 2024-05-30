@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AxiInterfaces.InterFaces;
+using AxiInterfaces.DTO;
 
 namespace AxiBusinessLogicLayer.Containers
 {
@@ -16,10 +17,37 @@ namespace AxiBusinessLogicLayer.Containers
             VraagDAL = vraagDAL;
         }
 
-        public string CreateVraag(Vraag vraag)
+        public VraagDTO ToDTO(Vraag vraag)
         {
-            string e = "";
-            return e;
+            return new()
+            {
+                Id = vraag.Id,
+                Kwestie = vraag.Kwestie
+            };
+        }
+        public Vraag ToVraag(VraagDTO vraagDTO)
+        {
+            return new(vraagDTO.Id, vraagDTO.Kwestie);
+        }
+
+        public bool CreateVraag(Vraag vraag)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(vraag.Kwestie))
+                {
+                    return false;
+                }
+                else
+                {
+                    return VraagDAL.CreateVraag(ToDTO(vraag));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                return false;
+            }
         }
 
         public string UpdateVraag(Vraag vraag)
@@ -33,9 +61,18 @@ namespace AxiBusinessLogicLayer.Containers
             return e;
         }
 
-        public List<Vraag> GetVragen()
+        public List<Vraag> GetVragenLijst(int lijstId)
         {
-            return new List<Vraag>();
+            try
+            {
+                List<Vraag> vragen = VraagDAL.GetVragenLijst(lijstId).Select(vraag => ToVraag(vraag)).ToList();
+                return vragen;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                return null;
+            }
         }
     }
 }

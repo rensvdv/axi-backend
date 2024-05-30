@@ -74,7 +74,7 @@ namespace AxiBusinessLogicLayer.Containers
         public List<Gebruiker> GetAllGebruikers()
         {
             List<Gebruiker> gebruikers = new List<Gebruiker>();
-            List<GebruikerDTO> gebruikerDTOs = this.gebruikerDAL.GetAll();
+            List<GebruikerDTO> gebruikerDTOs = gebruikerDAL.GetAll();
 
             foreach(GebruikerDTO gebruikerDTO in gebruikerDTOs)
             {
