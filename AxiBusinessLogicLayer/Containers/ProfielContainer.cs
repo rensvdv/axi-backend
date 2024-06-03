@@ -32,7 +32,13 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 ProfielDTO dto = ToDTO(profiel);
-                result = ProfielDAL.MaakProfiel(dto);
+                List<ProfielRechtenDTO> rechten = new List<ProfielRechtenDTO>();
+                foreach (Recht recht in profiel.Rechten)
+                {
+                    ProfielRechtenDTO prDTO = ToExtraDTO(profiel, recht);
+                    rechten.Add(prDTO);
+                }
+                result = ProfielDAL.MaakProfiel(dto, rechten);
                 return result;
             }
             catch (Exception e)
@@ -50,7 +56,13 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 ProfielDTO dto = ToDTO(profiel);
-                result = ProfielDAL.BewerkProfiel(dto);
+                List<ProfielRechtenDTO> rechten = new List<ProfielRechtenDTO>();
+                foreach (Recht recht in profiel.Rechten)
+                {
+                    ProfielRechtenDTO prDTO = ToExtraDTO(profiel, recht);
+                    rechten.Add(prDTO);
+                }
+                result = ProfielDAL.BewerkProfiel(dto, rechten);
                 return result;
             }
             catch (Exception e)
@@ -97,6 +109,7 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 profielen = ProfielDAL.ZoekGebruikerProfielen(gebruikerid).Select(profiel => ToProfiel(profiel)).ToList();
+                return profielen;
             }
             catch (Exception e)
             {
@@ -128,6 +141,17 @@ namespace AxiBusinessLogicLayer.Containers
             {
                 ProfielId = profiel.ProfielId,
                 Naam = profiel.ProfielNaam
+            };
+
+            return dto;
+        }
+
+        public ProfielRechtenDTO ToExtraDTO(Profiel profiel, Recht recht)
+        {
+            ProfielRechtenDTO dto = new ProfielRechtenDTO()
+            {
+                ProfielId = profiel.ProfielId,
+                RechtId = recht.Id
             };
 
             return dto;

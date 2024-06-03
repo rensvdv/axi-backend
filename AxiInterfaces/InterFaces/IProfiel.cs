@@ -9,8 +9,8 @@ namespace AxiInterfaces.InterFaces
 {
     public interface IProfiel
     {
-        bool BewerkProfiel(ProfielDTO dto);
-        bool MaakProfiel(ProfielDTO dto);
+        bool MaakProfiel(ProfielDTO dto, List<ProfielRechtenDTO> rechten);
+        bool BewerkProfiel(ProfielDTO dto, List<ProfielRechtenDTO> rechten);
         bool VerwijderProfiel(ProfielDTO dto);
         List<ProfielDTO> ZoekGebruikerProfielen(int gebruikerid);
         List<ProfielDTO> ZoekProfielen();

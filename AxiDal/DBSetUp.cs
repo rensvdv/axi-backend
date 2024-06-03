@@ -15,7 +15,7 @@ public class SetUp : DbContext
     public DbSet<LijstDTO> LijstDTO { get; set; }
     public DbSet<TeamLijstDTO> TeamLijstDTO { get; set; }
     public DbSet<VraagLijstDTO> VraagLijstDTO { get; set; }
-    public DbSet<GebruikerTeamProfielDTO> gebruikerTeamProfielDTO { get; set; }
+    public DbSet<GebruikerTeamProfielDTO> GebruikerTeamProfielDTO { get; set; }
     public DbSet<GebruikerRechtenDTO> GebruikerRechtenDTO { get; set; }
     public DbSet<ProfielRechtenDTO> ProfielRechtenDTO { get; set; }
 
@@ -32,6 +32,7 @@ public class SetUp : DbContext
         modelBuilder.Entity<GebruikerTeamProfielDTO>().HasNoKey();
         modelBuilder.Entity<VraagLijstDTO>().HasNoKey();
         modelBuilder.Entity<TeamLijstDTO>().HasNoKey();
+        modelBuilder.Entity<ProfielRechtenDTO>().HasNoKey();
 
         base.OnModelCreating(modelBuilder);
     }
