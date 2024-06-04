@@ -11,6 +11,40 @@ namespace AxiDal
 {
     public class GebruikerDAL : DbContext, IGebruiker
     {
+        public bool GeefGebruikerRecht(GebruikerRechtenDTO dto)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Recht Toevoegen aan gebruiker");
+                db.Add(dto);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+        public bool GeefGebruikerTeamProfiel(GebruikerTeamProfielDTO dto)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Profiel Toevoegen aan gebruiker");
+                db.Add(dto);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
         public List<GebruikerDTO> GetAll()
         {
             using var db = new SetUp();
@@ -80,6 +114,25 @@ namespace AxiDal
             }
         }
 
+        public bool UpdateGebruikerTeamProfiel(GebruikerTeamProfielDTO dto)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("GebruikerTeamProfiel bijwerken");
+                db.Attach(dto);
+                db.Entry(dto).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
         public bool VerwijderGebruiker(GebruikerDTO gebruikerDTO)
         {
             using var db = new SetUp();
@@ -93,6 +146,40 @@ namespace AxiDal
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruikerRecht(GebruikerRechtenDTO dto)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("GebruikerRecht verwijdern");
+                db.Remove(dto);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruikerTeamProfiel(GebruikerTeamProfielDTO dto)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("GebruikerTeamProfiel verwijderen");
+                db.Remove(dto);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
                 return false;
             }
         }

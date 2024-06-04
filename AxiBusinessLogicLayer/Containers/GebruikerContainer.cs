@@ -11,11 +11,13 @@ namespace AxiBusinessLogicLayer.Containers
 {
     public class GebruikerContainer
     {
-        private IGebruiker? gebruikerDAL;
+        private IGebruiker GebruikerDAL;
+        private ProfielContainer ProfielContainer;
 
-        public GebruikerContainer(IGebruiker gebruikerDAL)
+        public GebruikerContainer(IGebruiker gebruikerDAL, ProfielContainer profielContainer)
         {
-            this.gebruikerDAL = gebruikerDAL;
+            GebruikerDAL = gebruikerDAL;
+            ProfielContainer = profielContainer;
         }
 
         public GebruikerContainer()
@@ -29,7 +31,7 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = this.gebruikerDAL.MaakGebruiker(gebruikerDTO);
+                result = GebruikerDAL.MaakGebruiker(gebruikerDTO);
                 return result;
             }
             catch (Exception e)
@@ -45,7 +47,7 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = this.gebruikerDAL.UpdateGebruiker(gebruikerDTO);
+                result = GebruikerDAL.UpdateGebruiker(gebruikerDTO);
                 return result;
             }
             catch (Exception e)
@@ -61,7 +63,100 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = this.gebruikerDAL.VerwijderGebruiker(gebruikerDTO);
+                result = GebruikerDAL.VerwijderGebruiker(gebruikerDTO);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool GeefGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
+
+                result = GebruikerDAL.GeefGebruikerTeamProfiel(dto);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool UpdateGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
+
+                result = GebruikerDAL.UpdateGebruikerTeamProfiel(dto);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
+
+                result = GebruikerDAL.VerwijderGebruikerTeamProfiel(dto);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool GeefGebruikerRecht(int rechtId, int gebruikerId)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerRechtenDTO dto = new GebruikerRechtenDTO()
+                {
+                    RechtId = rechtId,
+                    GebruikerId = gebruikerId
+                };
+
+                result = GebruikerDAL.GeefGebruikerRecht(dto);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruikerRecht(int rechtId, int gebruikerId)
+        {
+            bool result = false;
+            try
+            {
+                GebruikerRechtenDTO dto = new GebruikerRechtenDTO()
+                {
+                    RechtId = rechtId,
+                    GebruikerId = gebruikerId
+                };
+
+                result = GebruikerDAL.VerwijderGebruikerRecht(dto);
                 return result;
             }
             catch (Exception e)
@@ -74,7 +169,7 @@ namespace AxiBusinessLogicLayer.Containers
         public List<Gebruiker> GetAllGebruikers()
         {
             List<Gebruiker> gebruikers = new List<Gebruiker>();
-            List<GebruikerDTO> gebruikerDTOs = gebruikerDAL.GetAll();
+            List<GebruikerDTO> gebruikerDTOs = GebruikerDAL.GetAll();
 
             foreach(GebruikerDTO gebruikerDTO in gebruikerDTOs)
             {
@@ -105,6 +200,19 @@ namespace AxiBusinessLogicLayer.Containers
                 Actief = gebruiker.Actief
             };
             return gebruikerDTO;
+        }
+
+        public GebruikerTeamProfielDTO ToGTPDTO(int gebruikerId, int teamId, int profielId)
+        {
+            GebruikerTeamProfielDTO dto = new GebruikerTeamProfielDTO()
+            {
+                GebruikerId = gebruikerId,
+                TeamId = teamId,
+                ProfielId = profielId
+
+            };
+
+            return dto;
         }
     }
 }

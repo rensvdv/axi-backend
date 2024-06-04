@@ -14,5 +14,10 @@ namespace AxiInterfaces.InterFaces
         public bool VerwijderGebruiker(GebruikerDTO gebruikerDTO);
         public GebruikerDTO GetUserById(int Id); 
         public List<GebruikerDTO> GetAll();
+        public bool GeefGebruikerTeamProfiel(GebruikerTeamProfielDTO dto);
+        public bool UpdateGebruikerTeamProfiel(GebruikerTeamProfielDTO dto);
+        public bool VerwijderGebruikerTeamProfiel(GebruikerTeamProfielDTO dto);
+        public bool GeefGebruikerRecht(GebruikerRechtenDTO dto);
+        public bool VerwijderGebruikerRecht(GebruikerRechtenDTO dto);
     }
 }

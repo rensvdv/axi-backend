@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AxiBusinessLogicLayer.Objecten;
 using AxiDal;
 using AxiInterfaces.DTO;
 using AxiInterfaces.InterFaces;
 
-namespace AxiBusinessLogicLayer.Containers
+namespace AxiBusinessLogicLayer.Objecten
 {
     public class RechtContainer
     {
