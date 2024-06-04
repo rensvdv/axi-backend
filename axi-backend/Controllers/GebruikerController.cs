@@ -13,7 +13,7 @@ namespace axi_backend.Controllers
         private readonly GebruikerContainer gebruikerContainer;
         public GebruikerController(ILogger<GebruikerController> logger)
         {
-            gebruikerContainer = new GebruikerContainer(new GebruikerDAL());
+            gebruikerContainer = new GebruikerContainer(new GebruikerDAL(), new ProfielContainer(new ProfielDAL(), new RechtDAL()));
             _logger = logger;
 
         }
