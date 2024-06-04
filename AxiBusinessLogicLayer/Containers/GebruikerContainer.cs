@@ -27,12 +27,10 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool MaakGebruiker(Gebruiker gebruiker)
         {
-            bool result = false;
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = GebruikerDAL.MaakGebruiker(gebruikerDTO);
-                return result;
+                return GebruikerDAL.MaakGebruiker(gebruikerDTO);
             }
             catch (Exception e)
             {
@@ -43,12 +41,10 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool UpdateGebruiker(Gebruiker gebruiker)
         {
-            bool result = false;
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = GebruikerDAL.UpdateGebruiker(gebruikerDTO);
-                return result;
+                return GebruikerDAL.UpdateGebruiker(gebruikerDTO);
             }
             catch (Exception e)
             {
@@ -59,12 +55,10 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool VerwijderGebruiker(Gebruiker gebruiker)
         {
-            bool result = false;
             try
             {
                 GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                result = GebruikerDAL.VerwijderGebruiker(gebruikerDTO);
-                return result;
+                return GebruikerDAL.VerwijderGebruiker(gebruikerDTO);
             }
             catch (Exception e)
             {
@@ -75,13 +69,11 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool GeefGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
         {
-            bool result = false;
             try
             {
                 GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
 
-                result = GebruikerDAL.GeefGebruikerTeamProfiel(dto);
-                return result;
+                return GebruikerDAL.GeefGebruikerTeamProfiel(dto);
             }
             catch (Exception e)
             {
@@ -92,13 +84,11 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool UpdateGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
         {
-            bool result = false;
             try
             {
                 GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
 
-                result = GebruikerDAL.UpdateGebruikerTeamProfiel(dto);
-                return result;
+                return GebruikerDAL.UpdateGebruikerTeamProfiel(dto);
             }
             catch (Exception e)
             {
@@ -109,13 +99,11 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool VerwijderGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
         {
-            bool result = false;
             try
             {
                 GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
 
-                result = GebruikerDAL.VerwijderGebruikerTeamProfiel(dto);
-                return result;
+                return GebruikerDAL.VerwijderGebruikerTeamProfiel(dto);
             }
             catch (Exception e)
             {
@@ -126,7 +114,6 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool GeefGebruikerRecht(int rechtId, int gebruikerId)
         {
-            bool result = false;
             try
             {
                 GebruikerRechtenDTO dto = new GebruikerRechtenDTO()
@@ -134,9 +121,7 @@ namespace AxiBusinessLogicLayer.Containers
                     RechtId = rechtId,
                     GebruikerId = gebruikerId
                 };
-
-                result = GebruikerDAL.GeefGebruikerRecht(dto);
-                return result;
+                return GebruikerDAL.GeefGebruikerRecht(dto);
             }
             catch (Exception e)
             {
@@ -147,7 +132,6 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool VerwijderGebruikerRecht(int rechtId, int gebruikerId)
         {
-            bool result = false;
             try
             {
                 GebruikerRechtenDTO dto = new GebruikerRechtenDTO()
@@ -156,8 +140,7 @@ namespace AxiBusinessLogicLayer.Containers
                     GebruikerId = gebruikerId
                 };
 
-                result = GebruikerDAL.VerwijderGebruikerRecht(dto);
-                return result;
+                return GebruikerDAL.VerwijderGebruikerRecht(dto);
             }
             catch (Exception e)
             {

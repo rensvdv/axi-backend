@@ -94,7 +94,7 @@ namespace AxiDal
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<ProfielDTO>();
             }
         }
 
@@ -111,7 +111,7 @@ namespace AxiDal
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new ProfielDTO();
             }
         }
 
@@ -126,7 +126,7 @@ namespace AxiDal
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<ProfielDTO>();
             }
         }
     }

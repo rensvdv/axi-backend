@@ -81,7 +81,7 @@ using AxiInterfaces.InterFaces;
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<RechtDTO>();
             }
         }
 
@@ -101,7 +101,7 @@ using AxiInterfaces.InterFaces;
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<RechtDTO>();
             }
             
         }
@@ -118,7 +118,7 @@ using AxiInterfaces.InterFaces;
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new RechtDTO();
             }
         }
 
@@ -135,7 +135,7 @@ using AxiInterfaces.InterFaces;
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<RechtDTO>();
             }
         }
     }

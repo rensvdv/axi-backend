@@ -20,7 +20,6 @@ namespace AxiBusinessLogicLayer.Objecten
 
         public bool MaakRecht(Recht recht)
         {
-            bool result = false;
             try
             {
                 if (recht.RechtNaam == null)
@@ -29,8 +28,7 @@ namespace AxiBusinessLogicLayer.Objecten
                 }
 
                 RechtDTO dto = ToDTO(recht);
-                result = RechtDAL.MaakRecht(dto);
-                return result;
+                return RechtDAL.MaakRecht(dto);
             }
             catch (Exception e)
             {
@@ -41,7 +39,6 @@ namespace AxiBusinessLogicLayer.Objecten
 
         public bool UpdateRecht(Recht recht)
         {
-            bool result = false;
             try
             {
                 if (recht.RechtNaam == null)
@@ -50,8 +47,7 @@ namespace AxiBusinessLogicLayer.Objecten
                 }
 
                 RechtDTO dto = ToDTO(recht);
-                result = RechtDAL.UpdateRecht(dto);
-                return result;
+                return RechtDAL.UpdateRecht(dto);
             }
             catch (Exception e)
             {
@@ -62,12 +58,10 @@ namespace AxiBusinessLogicLayer.Objecten
 
         public bool VerwijderRecht(Recht recht)
         {
-            bool result = false;
             try
             {
                 RechtDTO dto = ToDTO(recht);
-                result = RechtDAL.VerwijderRecht(dto);
-                return result;
+                return RechtDAL.VerwijderRecht(dto);
             }
             catch (Exception e)
             {
@@ -87,7 +81,7 @@ namespace AxiBusinessLogicLayer.Objecten
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<Recht>();
             }
         }
 
@@ -102,7 +96,7 @@ namespace AxiBusinessLogicLayer.Objecten
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<Recht>();
             }
         }
 
@@ -117,7 +111,7 @@ namespace AxiBusinessLogicLayer.Objecten
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<Recht>();
             }
         }
         public Recht ZoekRecht(int rechtid)
@@ -132,7 +126,7 @@ namespace AxiBusinessLogicLayer.Objecten
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new Recht();
             }
         }
 

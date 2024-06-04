@@ -43,6 +43,7 @@ namespace AxiBusinessLogicLayer.Containers
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
             
@@ -106,7 +107,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch(Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-                return null;
+                return new List<Feedback>();
             }
         }
 
@@ -127,7 +128,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-                return null;
+                return new List<Feedback>();
             }
         }
 
@@ -142,7 +143,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-                return null;
+                return new List<Feedback>();
             }
 
         }

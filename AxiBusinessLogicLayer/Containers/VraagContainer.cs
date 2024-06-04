@@ -71,7 +71,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-                return null;
+                return new List<Vraag>();
             }
         }
     }

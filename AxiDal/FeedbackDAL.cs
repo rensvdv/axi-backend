@@ -29,7 +29,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<FeedbackDTO>();
             }
         }
 
@@ -65,7 +65,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<FeedbackDTO>();
             }
         }
 
@@ -84,7 +84,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<FeedbackDTO>();
             }
         }
 

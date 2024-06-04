@@ -56,7 +56,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<GebruikerDTO>();
             }
         }
 
@@ -73,7 +73,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new GebruikerDTO();
             }
         }
 

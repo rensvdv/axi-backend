@@ -28,7 +28,6 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool MaakProfiel(Profiel profiel)
         {
-            bool result = false;
             try
             {
                 ProfielDTO dto = ToDTO(profiel);
@@ -38,8 +37,7 @@ namespace AxiBusinessLogicLayer.Containers
                     ProfielRechtenDTO prDTO = ToExtraDTO(profiel, recht);
                     rechten.Add(prDTO);
                 }
-                result = ProfielDAL.MaakProfiel(dto, rechten);
-                return result;
+                return ProfielDAL.MaakProfiel(dto, rechten);
             }
             catch (Exception e)
             {
@@ -52,7 +50,6 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool BewerkProfiel(Profiel profiel)
         {
-            bool result = false;
             try
             {
                 ProfielDTO dto = ToDTO(profiel);
@@ -62,8 +59,7 @@ namespace AxiBusinessLogicLayer.Containers
                     ProfielRechtenDTO prDTO = ToExtraDTO(profiel, recht);
                     rechten.Add(prDTO);
                 }
-                result = ProfielDAL.BewerkProfiel(dto, rechten);
-                return result;
+                return ProfielDAL.BewerkProfiel(dto, rechten);
             }
             catch (Exception e)
             {
@@ -74,12 +70,10 @@ namespace AxiBusinessLogicLayer.Containers
 
         public bool VerwijderProfiel(Profiel profiel)
         {
-            bool result = false;
             try
             {
                 ProfielDTO dto = ToDTO(profiel);
-                result = ProfielDAL.VerwijderProfiel(dto);
-                return result;
+                return ProfielDAL.VerwijderProfiel(dto);
             }
             catch (Exception e)
             {
@@ -99,7 +93,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<Profiel>();
             }
         }
 
@@ -114,7 +108,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new List<Profiel>();
             }
         }
 
@@ -129,7 +123,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return null;
+                return new Profiel();
             }
         }
 
