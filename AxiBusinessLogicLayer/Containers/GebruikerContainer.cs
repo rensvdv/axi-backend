@@ -12,12 +12,10 @@ namespace AxiBusinessLogicLayer.Containers
     public class GebruikerContainer
     {
         private IGebruiker GebruikerDAL;
-        private ProfielContainer ProfielContainer;
 
-        public GebruikerContainer(IGebruiker gebruikerDAL, ProfielContainer profielContainer)
+        public GebruikerContainer(IGebruiker gebruikerDAL)
         {
             GebruikerDAL = gebruikerDAL;
-            ProfielContainer = profielContainer;
         }
 
         public GebruikerContainer()
@@ -160,6 +158,13 @@ namespace AxiBusinessLogicLayer.Containers
                 gebruikers.Add(gebruiker);
             }
             return gebruikers;
+        }
+
+        public Gebruiker GetGebruiker(int id)
+        {
+            GebruikerDTO dto = GebruikerDAL.GetUserById(id);
+            Gebruiker gebruiker = ToGebruiker(dto);
+            return gebruiker;
         }
         public Gebruiker ToGebruiker(GebruikerDTO gebruikerDTO)
         {

@@ -44,8 +44,6 @@ namespace AxiBusinessLogicLayer.Containers
                 Console.WriteLine(e);
                 return false;
             }
-            
-
         }
 
         public bool BewerkProfiel(Profiel profiel)
