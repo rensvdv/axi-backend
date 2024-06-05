@@ -27,8 +27,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                return GebruikerDAL.MaakGebruiker(gebruikerDTO);
+                return GebruikerDAL.MaakGebruiker(ToDTO(gebruiker));
             }
             catch (Exception e)
             {
@@ -41,8 +40,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                return GebruikerDAL.UpdateGebruiker(gebruikerDTO);
+                return GebruikerDAL.UpdateGebruiker(ToDTO(gebruiker));
             }
             catch (Exception e)
             {
@@ -55,8 +53,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                GebruikerDTO gebruikerDTO = ToDTO(gebruiker);
-                return GebruikerDAL.VerwijderGebruiker(gebruikerDTO);
+                return GebruikerDAL.VerwijderGebruiker(ToDTO(gebruiker));
             }
             catch (Exception e)
             {
@@ -114,7 +111,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                GebruikerRechtenDTO dto = new GebruikerRechtenDTO()
+                GebruikerRechtenDTO dto = new()
                 {
                     RechtId = rechtId,
                     GebruikerId = gebruikerId
@@ -132,7 +129,7 @@ namespace AxiBusinessLogicLayer.Containers
         {
             try
             {
-                GebruikerRechtenDTO dto = new GebruikerRechtenDTO()
+                GebruikerRechtenDTO dto = new()
                 {
                     RechtId = rechtId,
                     GebruikerId = gebruikerId
@@ -149,37 +146,26 @@ namespace AxiBusinessLogicLayer.Containers
 
         public List<Gebruiker> GetAllGebruikers()
         {
-            List<Gebruiker> gebruikers = new List<Gebruiker>();
-            List<GebruikerDTO> gebruikerDTOs = GebruikerDAL.GetAll();
-
-            foreach(GebruikerDTO gebruikerDTO in gebruikerDTOs)
-            {
-                Gebruiker gebruiker = this.ToGebruiker(gebruikerDTO);
-                gebruikers.Add(gebruiker);
-            }
-            return gebruikers;
+            return GebruikerDAL.GetAll().Select(m => new Gebruiker(m)).ToList();
         }
 
         public Gebruiker GetGebruiker(int id)
         {
-            GebruikerDTO dto = GebruikerDAL.GetUserById(id);
-            Gebruiker gebruiker = ToGebruiker(dto);
-            return gebruiker;
+            return new(GebruikerDAL.GetUserById(id));
         }
         public Gebruiker ToGebruiker(GebruikerDTO gebruikerDTO)
         {
-            Gebruiker gebruiker = new Gebruiker(
+            return new(
                 gebruikerDTO.Id,
                 gebruikerDTO.Name,
                 gebruikerDTO.Email,
                 gebruikerDTO.Password,
                 gebruikerDTO.Actief);
-            return gebruiker;
         }
 
         public GebruikerDTO ToDTO(Gebruiker gebruiker)
         {
-            GebruikerDTO gebruikerDTO = new GebruikerDTO()
+            return new()
             {
                 Id = gebruiker.Id,
                 Name = gebruiker.Naam,
@@ -187,19 +173,17 @@ namespace AxiBusinessLogicLayer.Containers
                 Password = gebruiker.Password,
                 Actief = gebruiker.Actief
             };
-            return gebruikerDTO;
         }
 
         public GebruikerTeamProfielDTO ToGTPDTO(int gebruikerId, int teamId, int profielId)
         {
-            GebruikerTeamProfielDTO dto = new GebruikerTeamProfielDTO()
+            GebruikerTeamProfielDTO dto = new()
             {
                 GebruikerId = gebruikerId,
                 TeamId = teamId,
                 ProfielId = profielId
 
             };
-
             return dto;
         }
     }
