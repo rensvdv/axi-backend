@@ -60,6 +60,28 @@ namespace AxiDal
             }
         }
 
+        public List<GebruikerDTO> GetTeamGebruikers(int teamId)
+        {
+            using var db = new SetUp();
+            try
+            {
+                Console.WriteLine("Gebruikers aan het ophalen");
+
+                var gebruikers = db.GebruikerTeamProfielDTO
+                    .Where(g => g.TeamId == teamId)
+                    .SelectMany(g => db.GebruikerDTO
+                        .Where(f => f.Id == g.GebruikerId))
+                    .ToList();
+
+                return gebruikers;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public GebruikerDTO GetUserById(int id)
         {
             using var db = new SetUp();

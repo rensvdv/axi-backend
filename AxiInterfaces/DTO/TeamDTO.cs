@@ -8,19 +8,17 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
-    public class TeamDTO
+    public record TeamDTO
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; init; }
+        [Column("teamId")]
+        public int TeamId { get; init; }
+        [Column("naam")]
         public string Naam { get; init; }
+        [Column("beschrijving")]
         public string Beschrijving { get; init; }
-
-        public TeamDTO(int id, string naam, string beschrijving)
-        {
-            Id = id;
-            Naam = naam;
-            Beschrijving = beschrijving;
-        }
+        [Column("actief")]
+        public bool Actief { get; init; }
     }
 }

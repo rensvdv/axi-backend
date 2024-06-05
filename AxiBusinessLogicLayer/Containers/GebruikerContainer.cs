@@ -149,6 +149,11 @@ namespace AxiBusinessLogicLayer.Containers
             return GebruikerDAL.GetAll().Select(m => new Gebruiker(m)).ToList();
         }
 
+        public List<Gebruiker> GetTeamGebruikers(int teamId)
+        {
+            return GebruikerDAL.GetTeamGebruikers(teamId).Select(m => new Gebruiker(m)).ToList();
+        }
+
         public Gebruiker GetGebruiker(int id)
         {
             return new(GebruikerDAL.GetUserById(id));

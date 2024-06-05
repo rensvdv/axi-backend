@@ -137,6 +137,12 @@ namespace axi_backend.Controllers
             return gebruikerContainer.GetAllGebruikers();
         }
 
+        [HttpGet("getteamgebruikers/{teamid}")]
+        public List<Gebruiker> GetTeamGebruikers(int teamid)
+        {
+            return gebruikerContainer.GetTeamGebruikers(teamid);
+        }
+
         [HttpGet("getgebruiker/{gebruikerid}")]
         public Gebruiker GetGebruiker(int gebruikerid)
         {
