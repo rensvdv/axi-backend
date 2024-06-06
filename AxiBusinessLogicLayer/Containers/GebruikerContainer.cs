@@ -146,7 +146,7 @@ namespace AxiBusinessLogicLayer.Containers
 
         public List<Gebruiker> GetAllGebruikers()
         {
-            return GebruikerDAL.GetAll().Select(m => new Gebruiker(m)).ToList();
+            return GebruikerDAL.GetAll().Select(m => ToGebruiker(m)).ToList();
         }
 
         public Gebruiker GetGebruiker(int id)
