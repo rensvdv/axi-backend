@@ -49,7 +49,7 @@ namespace AxiBusinessLogicLayer.Containers
 
         public List<Team> GetTeams()
         {
-            return TeamDAL.GetTeams().Select(t => new Team(t)).ToList();
+            return TeamDAL.GetTeams().Select(t => ToTeam(t)).ToList();
         }
 
         public Team GetTeam(int teamId)
