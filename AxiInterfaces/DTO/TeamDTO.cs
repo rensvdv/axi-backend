@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
-    public record TeamDTO
+    [Table("Team")]
+    public class TeamDTO
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

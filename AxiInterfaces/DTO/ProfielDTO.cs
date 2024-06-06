@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
+    [Table("Profiel")]
     public record ProfielDTO
     {
         [Key]
