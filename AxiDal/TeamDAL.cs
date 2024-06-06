@@ -105,10 +105,14 @@ namespace AxiDal
             try
             {
                 Console.WriteLine("Gebruiker aan team toevoegen");
+                var profiel = db.GebruikerTeamProfielDTO
+                    .Where(x => x.TeamId == teamId)
+                    .FirstOrDefault();
                 GebruikerTeamProfielDTO dto = new GebruikerTeamProfielDTO()
                 {
                     TeamId = teamId,
-                    GebruikerId = gebruikerId
+                    GebruikerId = gebruikerId,
+                    ProfielId = profiel.ProfielId
                 };
                 db.Add(dto);
                 db.SaveChanges();

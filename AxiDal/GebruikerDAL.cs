@@ -34,7 +34,8 @@ namespace AxiDal
             try
             {
                 Console.WriteLine("Profiel Toevoegen aan gebruiker");
-                db.Add(dto);
+                db.Attach(dto);
+                db.Entry(dto).State = EntityState.Modified;
                 db.SaveChanges();
                 return true;
             }
