@@ -61,7 +61,7 @@ namespace axi_backend.Controllers
             }
         }
 
-        [HttpPost("geefgebruikerteamprofiel/{profielId}/{gebruikerId}/{teamId}")]
+        [HttpPut("geefgebruikerteamprofiel/{profielId}/{gebruikerId}/{teamId}")]
         public IActionResult GeefGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
         {
             var result = gebruikerContainer.GeefGebruikerTeamProfiel(profielId, gebruikerId, teamId);

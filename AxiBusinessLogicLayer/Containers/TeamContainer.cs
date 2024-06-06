@@ -27,7 +27,7 @@ namespace AxiBusinessLogicLayer.Containers
             return TeamDAL.MaakTeam(ToDTO(team));
         }
 
-        public bool WerkTeam(Team team)
+        public bool WerkTeamBij(Team team)
         {
             return TeamDAL.WerkTeamBij(ToDTO(team));
         }
