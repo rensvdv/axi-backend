@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
+    [Table("ProfielRechten")]
     public record ProfielRechtenDTO
     {
         [Column("ProfielId")]

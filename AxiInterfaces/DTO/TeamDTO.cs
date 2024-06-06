@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
+    [Table("Team")]
     public class TeamDTO
     {
         [Key]

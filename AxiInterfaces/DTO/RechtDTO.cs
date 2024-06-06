@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
+    [Table("Recht")]
     public record RechtDTO
     {
         [Key]

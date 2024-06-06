@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
+    [Table("GebruikerRechten")]
     public record GebruikerRechtenDTO
     {
         [Column("GebruikerId")]
