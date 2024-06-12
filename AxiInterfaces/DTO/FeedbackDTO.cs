@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace AxiInterfaces.DTO
     [Table("Feedback")]
     public record FeedbackDTO
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("FeedbackId")]
         public int Id { get; init; }
         [Column("GegevenFeedback")]

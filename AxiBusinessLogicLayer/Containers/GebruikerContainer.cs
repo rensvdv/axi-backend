@@ -11,11 +11,11 @@ namespace AxiBusinessLogicLayer.Containers
 {
     public class GebruikerContainer
     {
-        private IGebruiker? gebruikerDAL;
+        private IGebruiker GebruikerDAL;
 
         public GebruikerContainer(IGebruiker gebruikerDAL)
         {
-            this.gebruikerDAL = gebruikerDAL;
+            GebruikerDAL = gebruikerDAL;
         }
 
         public GebruikerContainer()
@@ -23,32 +23,154 @@ namespace AxiBusinessLogicLayer.Containers
 
         }
 
+        public bool MaakGebruiker(Gebruiker gebruiker)
+        {
+            try
+            {
+                return GebruikerDAL.MaakGebruiker(ToDTO(gebruiker));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool UpdateGebruiker(Gebruiker gebruiker)
+        {
+            try
+            {
+                return GebruikerDAL.UpdateGebruiker(ToDTO(gebruiker));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruiker(Gebruiker gebruiker)
+        {
+            try
+            {
+                return GebruikerDAL.VerwijderGebruiker(ToDTO(gebruiker));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool GeefGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
+        {
+            try
+            {
+                GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
+
+                return GebruikerDAL.GeefGebruikerTeamProfiel(dto);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool UpdateGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
+        {
+            try
+            {
+                GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
+
+                return GebruikerDAL.UpdateGebruikerTeamProfiel(dto);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruikerTeamProfiel(int profielId, int gebruikerId, int teamId)
+        {
+            try
+            {
+                GebruikerTeamProfielDTO dto = ToGTPDTO(gebruikerId, teamId, profielId);
+
+                return GebruikerDAL.VerwijderGebruikerTeamProfiel(dto);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool GeefGebruikerRecht(int rechtId, int gebruikerId)
+        {
+            try
+            {
+                GebruikerRechtenDTO dto = new()
+                {
+                    RechtId = rechtId,
+                    GebruikerId = gebruikerId
+                };
+                return GebruikerDAL.GeefGebruikerRecht(dto);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool VerwijderGebruikerRecht(int rechtId, int gebruikerId)
+        {
+            try
+            {
+                GebruikerRechtenDTO dto = new()
+                {
+                    RechtId = rechtId,
+                    GebruikerId = gebruikerId
+                };
+
+                return GebruikerDAL.VerwijderGebruikerRecht(dto);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
         public List<Gebruiker> GetAllGebruikers()
         {
-            List<Gebruiker> gebruikers = new List<Gebruiker>();
-            List<GebruikerDTO> gebruikerDTOs = gebruikerDAL.GetAll();
+            return GebruikerDAL.GetAll().Select(m => ToGebruiker(m)).ToList();
+        }
 
-            foreach(GebruikerDTO gebruikerDTO in gebruikerDTOs)
-            {
-                Gebruiker gebruiker = this.ToGebruiker(gebruikerDTO);
-                gebruikers.Add(gebruiker);
-            }
-            return gebruikers;
+        public List<Gebruiker> GetTeamGebruikers(int teamId)
+        {
+            return GebruikerDAL.GetTeamGebruikers(teamId).Select(m => new Gebruiker(m)).ToList();
+        }
+
+        public Gebruiker GetGebruiker(int id)
+        {
+            return new(GebruikerDAL.GetUserById(id));
         }
         public Gebruiker ToGebruiker(GebruikerDTO gebruikerDTO)
         {
-            Gebruiker gebruiker = new Gebruiker(
+            return new(
                 gebruikerDTO.Id,
                 gebruikerDTO.Name,
                 gebruikerDTO.Email,
                 gebruikerDTO.Password,
                 gebruikerDTO.Actief);
-            return gebruiker;
         }
 
         public GebruikerDTO ToDTO(Gebruiker gebruiker)
         {
-            GebruikerDTO gebruikerDTO = new GebruikerDTO()
+            return new()
             {
                 Id = gebruiker.Id,
                 Name = gebruiker.Naam,
@@ -56,7 +178,18 @@ namespace AxiBusinessLogicLayer.Containers
                 Password = gebruiker.Password,
                 Actief = gebruiker.Actief
             };
-            return gebruikerDTO;
+        }
+
+        public GebruikerTeamProfielDTO ToGTPDTO(int gebruikerId, int teamId, int profielId)
+        {
+            GebruikerTeamProfielDTO dto = new()
+            {
+                GebruikerId = gebruikerId,
+                TeamId = teamId,
+                ProfielId = profielId
+
+            };
+            return dto;
         }
     }
 }

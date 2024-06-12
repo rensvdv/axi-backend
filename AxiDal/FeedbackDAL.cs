@@ -18,7 +18,7 @@ namespace AxiDal
             {
                 Console.WriteLine("Reading all team feedback");
 
-                var feedback = db.gebruikerTeamProfielDTO
+                var feedback = db.GebruikerTeamProfielDTO
                     .Where(g => g.TeamId == teamid)
                     .SelectMany(g => db.FeedbackDTO
                         .Where(f => f.OntvangerId == g.GebruikerId))
@@ -29,7 +29,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<FeedbackDTO>();
             }
         }
 
@@ -65,7 +65,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<FeedbackDTO>();
             }
         }
 
@@ -84,7 +84,7 @@ namespace AxiDal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new List<FeedbackDTO>();
             }
         }
 

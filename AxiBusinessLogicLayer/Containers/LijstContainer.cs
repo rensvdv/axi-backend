@@ -32,7 +32,7 @@ namespace AxiBusinessLogicLayer.Containers
             catch(Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
-                return null;
+                return new List<Lijst>();
             }
         }
         public Lijst GetLijst(int id)

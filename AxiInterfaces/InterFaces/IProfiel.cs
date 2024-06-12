@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxiInterfaces.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace AxiInterfaces.InterFaces
 {
     public interface IProfiel
     {
+        bool MaakProfiel(ProfielDTO dto, List<ProfielRechtenDTO> rechten);
+        bool BewerkProfiel(ProfielDTO dto, List<ProfielRechtenDTO> rechten);
+        bool VerwijderProfiel(ProfielDTO dto);
+        List<ProfielDTO> ZoekGebruikerProfielen(int gebruikerid);
+        List<ProfielDTO> ZoekProfielen();
+        ProfielDTO ZoekProfiel(int id);
+        
     }
 }

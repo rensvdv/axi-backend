@@ -9,37 +9,33 @@ namespace AxiBusinessLogicLayer.Entiteiten
 {
     public class Team
     {
-        public int Id { get; private set; }
-        public string Naam { get; private set; }
-        //public List<Gebruiker> Teamleden { get; private set; }
+        public int TeamId { get; set; }
+        public string Naam { get; set; }
+        public string Beschrijving { get; set; }
+        public bool Actief { get; set; }
+        public List<Gebruiker> Teamleden { get; set; }
 
-        public Team(int id, string naam, List<Gebruiker> teamleden)
+        public Team(int teamId, string naam, string beschrijving, bool actief, List<Gebruiker> teamleden)
         {
-            Id = id;
+            TeamId = teamId;
             Naam = naam;
-            //Teamleden = teamleden;
+            Beschrijving = beschrijving;
+            Actief = actief;
+            Teamleden = teamleden;
         }
 
-        public Team(TeamDTO teamDTO)
+        public Team(string naam, string beschrijving, bool actief, List<Gebruiker> teamleden)
         {
-            Naam = teamDTO.Naam;
-            //if(teamDTO.Teamleden != null)
-            //{
-            //    Teamleden = teamDTO.Teamleden.Select(teamlid => new Gebruiker(teamlid)).ToList();
-            //}
+            Naam = naam;
+            Beschrijving = beschrijving;
+            Actief = actief;
+            Teamleden = teamleden;
         }
 
-        public TeamDTO ToDTO()
+        public Team()
         {
-            //if (Teamleden != null)
-            //{
-            //    return new(Id, Naam, Teamleden.Select(teamlid => teamlid.ToDTO(teamlid)).ToList());
-            //}
-            //else
-            //{
-            //    return new(Id, Naam, null);
-            //}
-            return null;
+            
         }
+        
     }
 }

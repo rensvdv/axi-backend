@@ -21,5 +21,10 @@ namespace AxiBusinessLogicLayer.Objecten
         {
             RechtNaam = rechtNaam;
         }
+
+        public Recht()
+        {
+            //
+        }
     }
 }

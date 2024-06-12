@@ -12,7 +12,22 @@ namespace AxiUnitTests.StubDAL
     {
         public int givenId { get; set; }
 
+        public bool GeefGebruikerRecht(GebruikerRechtenDTO dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GeefGebruikerTeamProfiel(GebruikerTeamProfielDTO dto)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<GebruikerDTO> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<GebruikerDTO> GetTeamGebruikers(int teamId)
         {
             throw new NotImplementedException();
         }
@@ -31,6 +46,36 @@ namespace AxiUnitTests.StubDAL
             };
 
             return gebruiker;
+        }
+
+        public bool MaakGebruiker(GebruikerDTO gebruikerDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateGebruiker(GebruikerDTO gebruikerDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateGebruikerTeamProfiel(GebruikerTeamProfielDTO dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerwijderGebruiker(GebruikerDTO gebruikerDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerwijderGebruikerRecht(GebruikerRechtenDTO dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerwijderGebruikerTeamProfiel(GebruikerTeamProfielDTO dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

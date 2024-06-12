@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AxiInterfaces.DTO
 {
+    [Table("Team")]
     public class TeamDTO
     {
-        public int Id { get; init; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("teamId")]
+        public int TeamId { get; init; }
+        [Column("naam")]
         public string Naam { get; init; }
+        [Column("beschrijving")]
         public string Beschrijving { get; init; }
-
-        public TeamDTO(int id, string naam, string beschrijving)
-        {
-            Id = id;
-            Naam = naam;
-            Beschrijving = beschrijving;
-        }
+        [Column("actief")]
+        public bool Actief { get; init; }
     }
 }

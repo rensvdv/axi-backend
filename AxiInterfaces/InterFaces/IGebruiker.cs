@@ -9,7 +9,16 @@ namespace AxiInterfaces.InterFaces
 {
     public interface IGebruiker
     {
-        public GebruikerDTO GetUserById(int Id);
+        public bool MaakGebruiker(GebruikerDTO gebruikerDTO);
+        public bool UpdateGebruiker(GebruikerDTO gebruikerDTO);
+        public bool VerwijderGebruiker(GebruikerDTO gebruikerDTO);
+        public GebruikerDTO GetUserById(int Id); 
         public List<GebruikerDTO> GetAll();
+        public List<GebruikerDTO> GetTeamGebruikers(int teamId);
+        public bool GeefGebruikerTeamProfiel(GebruikerTeamProfielDTO dto);
+        public bool UpdateGebruikerTeamProfiel(GebruikerTeamProfielDTO dto);
+        public bool VerwijderGebruikerTeamProfiel(GebruikerTeamProfielDTO dto);
+        public bool GeefGebruikerRecht(GebruikerRechtenDTO dto);
+        public bool VerwijderGebruikerRecht(GebruikerRechtenDTO dto);
     }
 }
