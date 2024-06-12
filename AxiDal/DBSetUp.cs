@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 
 public class SetUp : DbContext
 {
+    public DbSet<AntwoordDTO> AntwoordDTO { get; set; }
     public DbSet<FeedbackDTO> FeedbackDTO { get; set; }
     public DbSet<GebruikerDTO> GebruikerDTO { get; set; }
     public DbSet<ProfielDTO> ProfielDTO { get; set; }

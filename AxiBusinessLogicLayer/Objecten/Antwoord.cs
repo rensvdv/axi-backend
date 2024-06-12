@@ -12,9 +12,14 @@ namespace AxiBusinessLogicLayer.Objecten
     public class Antwoord
     {
         public int Id { get; set; }
-        public string Reactie { get; set; }
+        public string? Reactie { get; set; }
         public Vraag Vraag { get; set; }
         public Feedback Feedback { get; set; }
+
+        public Antwoord()
+        {
+            //
+        }
 
         public Antwoord(int id, string reactie, Vraag vraag, Feedback feedback)
         {
@@ -22,11 +27,6 @@ namespace AxiBusinessLogicLayer.Objecten
             Reactie = reactie;
             Vraag = vraag;
             Feedback = feedback;
-        }
-
-        public Antwoord() 
-        {
-            //
         }
     }
 }

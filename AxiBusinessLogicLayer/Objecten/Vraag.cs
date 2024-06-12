@@ -10,7 +10,7 @@ namespace AxiBusinessLogicLayer.Entiteiten
     public class Vraag
     {
         public int Id { get; private set; }
-        public string Kwestie { get; private set; }
+        public string? Kwestie { get; private set; }
 
         public Vraag(int id, string kwestie)
         {
@@ -18,6 +18,7 @@ namespace AxiBusinessLogicLayer.Entiteiten
             Kwestie = kwestie;
         }
 
+        public Vraag() { }
         public Vraag(VraagDTO vraagDTO)
         {
             Kwestie = vraagDTO.Kwestie;
