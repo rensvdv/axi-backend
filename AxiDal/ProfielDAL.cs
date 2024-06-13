@@ -11,18 +11,33 @@ namespace AxiDal
 {
     public class ProfielDAL : DbContext, IProfiel
     {
-        public bool MaakProfiel(ProfielDTO dto, List<ProfielRechtenDTO> rechten)
+        public bool MaakProfiel(ProfielDTO dto, List<RechtDTO> rechten)
         {
             using var db = new SetUp();
             Console.WriteLine("Nieuw profiel aanmaken");
+
             try
             {
                 db.Add(dto);
-                foreach (ProfielRechtenDTO recht in rechten)
+
+                db.SaveChanges();
+
+                ProfielDTO profiel = db.ProfielDTO
+                    .Where(p => p.Naam == dto.Naam)
+                    .FirstOrDefault();
+
+                foreach (RechtDTO recht in rechten)
                 {
-                    db.ProfielRechtenDTO.Add(recht);
+                    ProfielRechtenDTO profielRechtenDTO = new ProfielRechtenDTO()
+                    {
+                        ProfielId = profiel.ProfielId,
+                        RechtId = recht.RechtId
+                    };
+
+                    db.ProfielRechtenDTO.Add(profielRechtenDTO);
                 }
                 db.SaveChanges();
+
                 return true;
             }
             catch (Exception e)

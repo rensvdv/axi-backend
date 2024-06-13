@@ -33,7 +33,9 @@ public class SetUp : DbContext
         modelBuilder.Entity<GebruikerTeamProfielDTO>().HasNoKey();
         modelBuilder.Entity<VraagLijstDTO>().HasNoKey();
         modelBuilder.Entity<TeamLijstDTO>().HasNoKey();
-        modelBuilder.Entity<ProfielRechtenDTO>().HasNoKey();
+        //modelBuilder.Entity<ProfielRechtenDTO>()
+        //    .HasNoKey()
+        //    .ToTable("ProfielRechten"); 
         modelBuilder.Entity<GebruikerRechtenDTO>().HasNoKey();
 
         base.OnModelCreating(modelBuilder);

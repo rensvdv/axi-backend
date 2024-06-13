@@ -31,10 +31,10 @@ namespace AxiBusinessLogicLayer.Containers
             try
             {
                 ProfielDTO dto = ToDTO(profiel);
-                List<ProfielRechtenDTO> rechten = new List<ProfielRechtenDTO>();
+                List<RechtDTO> rechten = new List<RechtDTO>();
                 foreach (Recht recht in profiel.Rechten)
                 {
-                    ProfielRechtenDTO prDTO = ToExtraDTO(profiel, recht);
+                    RechtDTO prDTO = rechtContainer.ToDTO(recht);
                     rechten.Add(prDTO);
                 }
                 return ProfielDAL.MaakProfiel(dto, rechten);
