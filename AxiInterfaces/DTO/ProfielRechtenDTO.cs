@@ -12,6 +12,8 @@ namespace AxiInterfaces.DTO
     public record ProfielRechtenDTO
     {
         [Key]
+        [Column("Id")]
+        public int Id { get; set; }
         [Column("ProfielId")]
         public int ProfielId { get; init; }
         [Column("RechtId")]

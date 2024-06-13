@@ -21,10 +21,31 @@ namespace axi_backend.Controllers
         [HttpPost("maakprofiel")]
         public IActionResult MaakProfiel([FromBody] Profiel profiel)
         {
-            var result = profielContainer.MaakProfiel(profiel);
-            if (result)
+            bool NameGood = false;
+            var profielen = profielContainer.ZoekProfielen();
+            foreach(var item in profielen)
             {
-                return Ok(result);
+                if(item.ProfielNaam == profiel.ProfielNaam)
+                {
+                    NameGood = false;
+                    break;
+                }
+                else
+                {
+                    NameGood = true;
+                }
+            }
+            if(NameGood)
+            {
+                var result = profielContainer.MaakProfiel(profiel);
+                if (result)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
             else
             {
