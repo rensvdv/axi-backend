@@ -9,8 +9,8 @@ namespace AxiBusinessLogicLayer.Entiteiten
 {
     public class Vraag
     {
-        public int Id { get; private set; }
-        public string? Kwestie { get; private set; }
+        public int Id { get; set; }
+        public string? Kwestie { get; set; }
 
         public Vraag(int id, string kwestie)
         {

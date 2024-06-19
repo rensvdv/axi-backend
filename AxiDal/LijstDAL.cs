@@ -16,7 +16,7 @@ namespace AxiDal
             using var db = new SetUp();
             try
             {
-                Console.WriteLine("Reading all team feedback");
+                Console.WriteLine("Lezen Lijsten van team");
                 var lijsten = db.TeamLijstDTO
                     .Where(g => g.TeamId == teamId)
                     .SelectMany(g => db.LijstDTO

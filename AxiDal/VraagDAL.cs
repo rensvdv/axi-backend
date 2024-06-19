@@ -33,7 +33,7 @@ namespace AxiDal
             using var db = new SetUp();
             try
             {
-                Console.WriteLine("Reading all vragen");
+                Console.WriteLine("Lezen Vragen van Lijst");
                 var lijsten = db.VraagLijstDTO
                     .Where(g => g.LijstId == lijstId)
                     .SelectMany(g => db.VraagDTO
