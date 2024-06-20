@@ -1,7 +1,6 @@
 ﻿using AxiBusinessLogicLayer.Containers;
 using AxiBusinessLogicLayer.Entiteiten;
 using AxiDal;
-using AxiInterfaces.InterFaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace axi_backend.Controllers
@@ -13,10 +12,10 @@ namespace axi_backend.Controllers
         private readonly ILogger<TeamController> Logger;
         private readonly TeamContainer Container;
 
-        public TeamController(ILogger<TeamController> logger, TeamContainer container)
+        public TeamController(ILogger<TeamController> logger)
         {
-            Logger = logger;
             Container = new TeamContainer(new TeamDAL(), new GebruikerDAL());
+            Logger = logger;
         }
 
         [HttpPost("maakteam")]
